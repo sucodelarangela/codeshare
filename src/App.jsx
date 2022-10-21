@@ -1,9 +1,10 @@
-import { Example } from 'styles/globalStyles';
+import { GlobalStyles } from 'styles/globalStyles';
 
 function App() {
   return (
     <div>
-      <Example>code_share</Example>
+      <GlobalStyles />
+      <h1>code_share</h1>
     </div>
   );
 }
