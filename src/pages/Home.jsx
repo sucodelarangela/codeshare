@@ -2,12 +2,17 @@ import * as Styled from './styles.jsx';
 
 export const Home = () => {
   return (
-    <div>
+    <section className='home'>
+      <Styled.MainMenu>
+        <legend>Menu</legend>
+        <Styled.HightlightBtn>Editor de código</Styled.HightlightBtn>
+        <Styled.HightlightBtn>Comunidade</Styled.HightlightBtn>
+      </Styled.MainMenu>
       <Styled.EditorField>
         <Styled.Textarea placeholder='Digite aqui o seu código' />
-        <Styled.HightlightBtn>Visualizar com o Highlight</Styled.HightlightBtn>
+        <Styled.HightlightBtn>Visualizar com Highlight</Styled.HightlightBtn>
       </Styled.EditorField>
-      <form>
+      <Styled.Form>
         <Styled.Fieldset>
           <legend>Seu projeto</legend>
           <Styled.HightlightBtn>Nome do seu projeto</Styled.HightlightBtn>
@@ -19,7 +24,7 @@ export const Home = () => {
           <Styled.HightlightBtn>Cor</Styled.HightlightBtn>
         </Styled.Fieldset>
         <Styled.HightlightBtn>Salvar projeto</Styled.HightlightBtn>
-      </form>
-    </div>
+      </Styled.Form>
+    </section>
   );
 };

@@ -1,24 +1,62 @@
 import styled from 'styled-components';
 
-export const EditorField = styled.section`
-  margin: 2.5rem 0;
+const MainMenu = styled.div`
+  display: none;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    grid-area: menu;
+    width: 17rem;
+    & legend {
+      padding-bottom: 0;
+    }
+  }
 `;
 
-export const Textarea = styled.textarea`
+const EditorField = styled.div`
+  margin: 2.5rem 0;
+  @media screen and (min-width: 1280px) {
+    grid-area: editor;
+    margin-top: 0;
+  }
+`;
+
+const Textarea = styled.textarea`
   background-color: white;
   height: 30.75rem;
   width: 100%;
   margin-bottom: 2rem;
+  resize: none;
 `;
 
-export const HightlightBtn = styled.button`
+const HightlightBtn = styled.button`
   width: 100%;
   height: 3.5rem;
 `;
 
-export const Fieldset = styled.fieldset`
+const Form = styled.form`
+  @media screen and (min-width: 1280px) {
+    width: 17rem;
+    grid-area: form;
+  }
+`;
+
+const Fieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2.5rem;
+  @media screen and (min-width: 768px) {
+    &:nth-child(2) {
+      flex-direction: row;
+    }
+  @media screen and (min-width: 1280px) {
+    &:nth-child(2) {
+      flex-direction: column;
+    }
+  }
+  }
 `;
+
+export { MainMenu, EditorField, Textarea, HightlightBtn, Form, Fieldset };

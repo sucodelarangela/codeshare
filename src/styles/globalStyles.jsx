@@ -33,9 +33,22 @@ body {
   background: var(--azul-escuro);
   padding: 1rem;
   height: 100vh;
+  @media screen and (min-width: 768px) {
+    padding: 2rem;
+  }
 }
 
 legend {
   color: #fff;
+  padding-bottom: 1rem;
+}
+
+.home {
+  @media screen and (min-width: 1280px) {
+    display: grid;
+    grid-template-areas: 'menu editor form';
+    grid-template-columns: 17rem auto 17rem;
+    gap: 2.5rem;
+  }
 }
 `;
