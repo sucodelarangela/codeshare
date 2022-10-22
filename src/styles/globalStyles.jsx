@@ -34,4 +34,8 @@ body {
   padding: 1rem;
   height: 100vh;
 }
+
+legend {
+  color: #fff;
+}
 `;
