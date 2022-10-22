@@ -31,5 +31,7 @@ export const GlobalStyles = createGlobalStyle`
 body {
   font-family: var(--inter);
   background: var(--azul-escuro);
+  padding: 1rem;
+  height: 100vh;
 }
 `;
