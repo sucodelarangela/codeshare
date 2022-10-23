@@ -11,6 +11,7 @@
     "lint:fix": "eslint \"./src/**/*.{js,jsx}\" --fix"
   },
   "dependencies": {
+    "hamburger-react": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6"
