@@ -4,6 +4,7 @@ import commIcon from 'assets/comm_icon.svg';
 
 import { NavBtn } from 'components/NavBtn.jsx';
 import { CodeEditor } from './CodeEditor.jsx';
+import { CustomizationForm } from './CustomizationForm.jsx';
 
 export const Home = () => {
   return (
@@ -16,19 +17,20 @@ export const Home = () => {
       <Styled.EditorField>
         <CodeEditor />
       </Styled.EditorField>
-      <Styled.Form>
+      <CustomizationForm />
+      {/* <Styled.Form>
         <Styled.Fieldset>
-          <legend>Seu projeto</legend>
-          <Styled.HightlightBtn>Nome do seu projeto</Styled.HightlightBtn>
-          <Styled.HightlightBtn>Descrição do seu projeto</Styled.HightlightBtn>
+          <h3>Seu projeto</h3>
+          <InputWrapper type='text' placeholder='Nome do seu projeto' />
+          <InputWrapper type='text' placeholder='Descrição do seu projeto' />
         </Styled.Fieldset>
         <Styled.Fieldset>
-          <legend>Personalização</legend>
+          <h3>Personalização</h3>
           <Styled.HightlightBtn>Linguagem</Styled.HightlightBtn>
           <Styled.HightlightBtn>Cor</Styled.HightlightBtn>
         </Styled.Fieldset>
         <Styled.HightlightBtn>Salvar projeto</Styled.HightlightBtn>
-      </Styled.Form>
+      </Styled.Form> */}
     </section>
   );
 };

@@ -50,6 +50,13 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--white);
   }
 
+  h3 {
+    padding-bottom: 0;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: .4rem;
+  }
+
   a {
     cursor: pointer;
   }

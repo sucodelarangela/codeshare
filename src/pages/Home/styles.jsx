@@ -8,12 +8,6 @@ const MainMenu = styled.div`
     gap: 1rem;
     grid-area: menu;
     width: 17rem;
-    & h3 {
-      padding-bottom: 0;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: .4rem;
-    }
     & a {
       display: flex;
       align-items: center;
@@ -75,6 +69,35 @@ const HightlightBtn = styled.button`
 `;
 
 const Form = styled.form`
+  & input, & select {
+    display: flex;
+    width: 100%;
+    height: 3.5rem;
+    padding: 1rem;
+    background: var(--input);
+    border-radius: 8px;
+    caret-color: var(--white);
+    color: var(--white);
+    &:hover, &:focus {
+      background: var(--input-hover);
+    }
+  }
+  & input[type="color"] {
+    padding: .5rem;
+    background: transparent;
+    border: 1px solid var(--white);
+    border-radius: 8px;
+    &::-moz-color-swatch, &::-webkit-color-swatch {
+      border: none;
+      border-radius: 4px;
+    }
+    &:hover, &:focus {
+      background: var(--input);
+    }
+  }
+  & option {
+    color: var(--black);
+  }
   @media screen and (min-width: 1280px) {
     width: 17rem;
     grid-area: form;
@@ -86,16 +109,17 @@ const Fieldset = styled.fieldset`
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2.5rem;
-  @media screen and (min-width: 768px) {
-    &:nth-child(2) {
-      flex-direction: row;
+  & div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
     }
-  @media screen and (min-width: 1280px) {
-    &:nth-child(2) {
-      flex-direction: column;
+    @media screen and (min-width: 1280px) {
+        flex-direction: column;
+      }
     }
-  }
-  }
 `;
 
 export { MainMenu, EditorField, Textarea, HightlightBtn, Form, Fieldset };
