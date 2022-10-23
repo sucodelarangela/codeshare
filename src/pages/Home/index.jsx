@@ -3,6 +3,7 @@ import editorIcon from 'assets/editor_icon.svg';
 import commIcon from 'assets/comm_icon.svg';
 
 import { NavBtn } from 'components/NavBtn.jsx';
+import { CodeEditor } from './CodeEditor.jsx';
 
 export const Home = () => {
   return (
@@ -13,8 +14,7 @@ export const Home = () => {
         <NavBtn src={commIcon}>Comunidade</NavBtn>
       </Styled.MainMenu>
       <Styled.EditorField>
-        <Styled.Textarea placeholder='Digite aqui o seu código' />
-        <Styled.HightlightBtn>Visualizar com Highlight</Styled.HightlightBtn>
+        <CodeEditor />
       </Styled.EditorField>
       <Styled.Form>
         <Styled.Fieldset>

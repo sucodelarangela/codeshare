@@ -14,14 +14,16 @@ export const GlobalStyles = createGlobalStyle`
       
   :root {
     /* Colors */
+    --black: #141414;
+    --cian: #6bd1ff;
+    --highlight-btn: rgba(80, 129, 251, 0.08);
+    --highlight-hover: rgba(80, 129, 251, 0.16);
+    --highlight-active: rgba(80, 129, 251, 0.24);
     --light-blue: #5081fb;
     --dark-blue: #051d3b;
     --input: rgba(255, 255, 255, .16);
     --input-hover: rgba(255, 255, 255, .24);
     --white: rgba(255, 255, 255, 1);
-    --cian: #6bd1ff;
-    --botao-highlight: rgba(80, 129, 251, 0.08);
-    --botao-active: rgba(80, 129, 251, 0.16);
     --laranja: #ffc46b;
     --linha: rgba(255, 255, 255, 1);
     --menu-mobile: #2d415b;

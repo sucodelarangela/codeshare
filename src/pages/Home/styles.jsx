@@ -33,17 +33,45 @@ const EditorField = styled.div`
   }
 `;
 
-const Textarea = styled.textarea`
-  background-color: white;
-  height: 30.75rem;
-  width: 100%;
+const Textarea = styled.div`
+  padding: 2rem;
+  background: var(--cian);
+  border-radius: 8px;
   margin-bottom: 2rem;
-  resize: none;
+  & .editor__dots {
+    background: var(--black);
+    padding: 1rem 1rem .5rem;
+    border-radius: 4px 4px 0 0;
+  }
+  & textarea {
+    display: flex;
+    background: var(--black);
+    min-height: 18rem;
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+    padding: 1rem;
+    white-space: pre-wrap;
+    line-height: 1.125rem;
+    font-family: var(--roboto);
+    font-size: 0.875rem;
+    outline: none;
+    resize: none;
+  }
 `;
 
 const HightlightBtn = styled.button`
   width: 100%;
   height: 3.5rem;
+  background: var(--highlight-btn);
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    background: var(--highlight-hover);
+  }
+  &:active {
+    border: 4px solid var(--highlight-active);
+    transition: 0s
+  }
 `;
 
 const Form = styled.form`
