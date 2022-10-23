@@ -1,17 +1,20 @@
 import * as Styled from './styles.jsx';
 
+import logo from 'assets/logo.svg';
+
 export const Header = () => {
   return (
     <Styled.Header>
-      <Styled.Logo />
-      <Styled.Search />
+      <img src={logo} alt="Codeshare home" />
+      <label htmlFor="home__search" className='sr-only'>Busque por algo</label>
+      <Styled.Search id='home__search' type='text' placeholder='Busque por algo...' />
       <Styled.MenuWrapper>
         <Styled.HeaderIcons />
         <Styled.HeaderIcons />
       </Styled.MenuWrapper>
-      <Styled.User>
-        <div style={{ width: '2rem', height: '2rem', background: 'white' }}></div>
-        <div style={{ width: 'auto', height: '2rem', background: 'white' }}>Usuário</div>
+      <Styled.User href='#'>
+        <img src="https://github.com/sucodelarangela.png" alt="" aria-hidden='true' />
+        sucodelarangela
       </Styled.User>
     </Styled.Header>
   );
