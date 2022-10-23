@@ -48,6 +48,10 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--white);
   }
 
+  a {
+    cursor: pointer;
+  }
+
   legend {
     padding-bottom: 1rem;
   }

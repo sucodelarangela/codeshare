@@ -1,12 +1,16 @@
 import * as Styled from './styles.jsx';
+import editorIcon from 'assets/editor_icon.svg';
+import commIcon from 'assets/comm_icon.svg';
+
+import { NavBtn } from 'components/NavBtn.jsx';
 
 export const Home = () => {
   return (
     <section className='home'>
       <Styled.MainMenu>
-        <legend>Menu</legend>
-        <Styled.HightlightBtn>Editor de código</Styled.HightlightBtn>
-        <Styled.HightlightBtn>Comunidade</Styled.HightlightBtn>
+        <h3>Menu</h3>
+        <NavBtn src={editorIcon}>Editor de código</NavBtn>
+        <NavBtn src={commIcon}>Comunidade</NavBtn>
       </Styled.MainMenu>
       <Styled.EditorField>
         <Styled.Textarea placeholder='Digite aqui o seu código' />

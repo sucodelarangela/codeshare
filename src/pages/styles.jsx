@@ -8,8 +8,19 @@ const MainMenu = styled.div`
     gap: 1rem;
     grid-area: menu;
     width: 17rem;
-    & legend {
+    & h3 {
       padding-bottom: 0;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: .4rem;
+    }
+    & a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      &:hover, &:focus {
+      opacity: .8;
+    }
     }
   }
 `;
