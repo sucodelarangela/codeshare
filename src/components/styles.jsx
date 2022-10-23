@@ -45,17 +45,13 @@ const Search = styled.input`
 const MenuWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
-  @media screen and (min-width: 1280px) {
-    display: none;
+  & button {
+    padding: 0.5rem;
+    background: transparent;
+    cursor: pointer;
   }
-`;
-
-const HeaderIcons = styled.div`
-  width: 3rem;
-  height: 3rem;
-  background: white;
   @media screen and (min-width: 768px) {
-    &:first-child {
+    button {
       display: none;
     }
   }
@@ -88,4 +84,4 @@ const User = styled.a`
   }
 `;
 
-export { Header, Logo, Search, MenuWrapper, HeaderIcons, User };
+export { Header, Logo, Search, MenuWrapper, User };
