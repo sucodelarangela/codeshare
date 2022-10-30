@@ -1,20 +1,9 @@
-const http = require('http');
-const port = 8000;
+// importando express app.js
+import app from './src/app.js';
 
-const routes = {
-  '/': 'Codeshare server',
-  '/codes': 'Codes saved',
-  '/users': 'Users'
-};
+// configurando a porta para deploys com express
+const port = process.env.PORT || 8000;
 
-// Criando o servidor e definindo o que ele vai escutar
-const server = http.createServer((req, res) => {
-  // status, {tipo de conteúdo}
-  res.writeHead(200, { 'Content-Type': 'text/plain' }); // configurando cabeçalho
-  //res.end('Curso de Node'); // conteúdo renderizado estático em tela ↓
-  res.end(routes[req.url]); // mostra conteúdo de acordo com a url
-});
-
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
