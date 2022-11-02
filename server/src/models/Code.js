@@ -6,7 +6,6 @@ const codeSchema = new mongoose.Schema(
     id: { type: String },
     code: [
       {
-        id: { type: String },
         content: { type: String, required: true },
         likes: { type: Number }
       }
