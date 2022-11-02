@@ -7,7 +7,7 @@ db.on('error', console.log.bind(console, 'Erro de conexão'));
 
 // Uma vez feita a conexão, loga uma mensagem no console
 db.once('open', () => {
-  console.log('A conexão com o banco ocorreu com sucesso.');
+  console.log('Connection to database successful.');
 });
 
 const app = express();
