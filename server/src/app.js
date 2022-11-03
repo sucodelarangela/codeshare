@@ -2,6 +2,7 @@
 import express from 'express';
 import db from './config/dbConnect.js'; // importando o db
 import codes from './models/Code.js'; // importando o schema
+import routes from './routes/index.js';
 
 // se ocorrer algum erro na conexão, fazemos um link com o nosso terminal para mostrar esse erro
 db.on('error', console.log.bind(console, 'Erro de conexão'));
@@ -15,22 +16,25 @@ const app = express();
 
 app.use(express.json()); // para conseguir interpretar o que vem via POST ou PUT como json
 
+routes(app);
+
 // const codes = [
 //   { id: 1, title: '<p>Hello World</p>' },
 //   { id: 2, title: '<h1>Title</h1>' }
 // ];
 
 // requisições:
-app.get('/', (req, res) => {
-  res.status(200).send('Codeshare');
-});
+// app.get('/', (req, res) => {
+//   res.status(200).send('Codeshare');
+// });
 
-app.get('/codes', (req, res) => {
-  // find -> traz todos os elementos
-  codes.find((err, codes) => {
-    res.status(200).json(codes);
-  });
-});
+// VAI PARA O CODESCONTROLLER.JS
+// app.get('/codes', (req, res) => {
+//   // find -> traz todos os elementos
+//   codes.find((err, codes) => {
+//     res.status(200).json(codes);
+//   });
+// });
 
 app.get('/codes/:id', (req, res) => {
   let index = findCode(req.params.id);
