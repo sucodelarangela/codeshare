@@ -41,10 +41,10 @@ app.get('/codes/:id', (req, res) => {
   res.json(codes[index]);
 });
 
-app.post('/codes', (req, res) => {
-  codes.push(req.body); // acrescenta no array o que vier no corpo da requisição
-  res.status(201).send('O código foi cadastrado com sucesso.');
-});
+// app.post('/codes', (req, res) => {
+//   codes.push(req.body); // acrescenta no array o que vier no corpo da requisição
+//   res.status(201).send('O código foi cadastrado com sucesso.');
+// });
 
 app.put('/codes/:id', (req, res) => {
   let index = findCode(req.params.id);
