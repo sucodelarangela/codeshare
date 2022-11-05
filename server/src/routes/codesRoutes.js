@@ -10,7 +10,8 @@ router
   .get('/codes', CodeController.listCodes)
   .get('/codes/:id', CodeController.listCodesById)
   .post('/codes', CodeController.registerCode)
-  .put('/codes/:id', CodeController.updateCode);
+  .put('/codes/:id', CodeController.updateCode)
+  .delete('/codes/:id', CodeController.deleteCode);
 
 // exportaremos para o app.js
 export default router;

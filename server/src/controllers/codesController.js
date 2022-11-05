@@ -41,9 +41,21 @@ class CodeController {
     // No MongoDb, a palavra reservada $set determina o que deve ser substituído
     codes.findByIdAndUpdate(id, { $set: req.body }, (err) => {
       if (!err) {
-        res.status(200).send('Code updated successful.');
+        res.status(200).send('Code updated successfully');
       } else {
         res.status(500).send({ message: err.message });
+      }
+    });
+  };
+
+  // deletando um código - DELETE
+  static deleteCode = (req, res) => {
+    const { id } = req.params;
+    codes.findByIdAndDelete(id, (err) => {
+      if (!err) {
+        res.status(200).send('Code deleted successfully');
+      } else {
+        status(500).send({ message: err.message });
       }
     });
   };
