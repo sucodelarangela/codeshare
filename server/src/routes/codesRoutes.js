@@ -8,7 +8,9 @@ const router = express.Router();
 // aqui definiremos os métodos http
 router
   .get('/codes', CodeController.listCodes)
-  .post('/codes', CodeController.registerCode);
+  .get('/codes/:id', CodeController.listCodesById)
+  .post('/codes', CodeController.registerCode)
+  .put('/codes/:id', CodeController.updateCode);
 
 // exportaremos para o app.js
 export default router;
