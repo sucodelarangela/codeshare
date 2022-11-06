@@ -3,20 +3,25 @@ import codes from '../models/Code.js';
 // classe para manter os métodos - GET
 class CodeController {
   static listCodes = (req, res) => {
-    codes.find((err, codes) => {
-      res.status(200).json(codes);
-    });
+    // encontra os livros, popula os dados de autor conforme o banco de dados e executa a linha abaixo para fazer o get
+    codes.find()
+      .populate('author')
+      .exec((err, codes) => {
+        res.status(200).json(codes);
+      });
   };
 
   static listCodesById = (req, res) => {
     const { id } = req.params;
-    codes.findById(id, (err, codes) => {
-      if (err) {
-        res.status(400).send({ message: `${err.message} - Code id not found` });
-      } else {
-        res.status(200).send(codes);
-      }
-    });
+    codes.findById(id)
+      .populate('author', 'name') // se tivéssemos algum outro campo em author, como "nacionalidade" por exemplo, essa linha de código incluiria apenas o nome nos dados do get
+      .exec((err, codes) => {
+        if (err) {
+          res.status(400).send({ message: `${err.message} - Code id not found` });
+        } else {
+          res.status(200).send(codes);
+        }
+      });
   };
 
   static registerCode = (req, res) => {
