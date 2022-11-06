@@ -1,6 +1,7 @@
 // este arquivo concentra todas as rotas a serem usadas na aplicação, dessa forma, organizamos melhor e não precisamos fazer várias importações de arquivos
 import express from 'express';
 import codes from './codesRoutes.js';
+import authors from './authorsRoutes.js';
 
 const routes = (app) => {
   // essa requisição só devolve um texto estático, então não há problema ela ficar toda aqui. As demais requisições deverão ficar no codesController
@@ -11,7 +12,8 @@ const routes = (app) => {
   // Para os demais casos, usaremos:
   app.use(
     express.json(),
-    codes
+    codes,
+    authors
   );
 };
 

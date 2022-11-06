@@ -22,8 +22,6 @@ class CodeController {
   static registerCode = (req, res) => {
     let newCode = new codes(req.body); // instanciamos nosso model para criar um novo registro de código com base no que vem no corpo da requisição
 
-    console.log(newCode);
-
     // salvando os dados no banco - POST
     newCode.save((err) => {
       if (err) {
