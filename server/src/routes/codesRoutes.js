@@ -8,6 +8,7 @@ const router = express.Router();
 // aqui definiremos os métodos http
 router
   .get('/codes', CodeController.listCodes)
+  .get('/codes/search', CodeController.listCodesByAuthor) // deve vir antes da rota com params :id
   .get('/codes/:id', CodeController.listCodesById)
   .post('/codes', CodeController.registerCode)
   .put('/codes/:id', CodeController.updateCode)

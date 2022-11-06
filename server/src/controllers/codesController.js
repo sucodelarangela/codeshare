@@ -62,6 +62,13 @@ class CodeController {
       }
     });
   };
+
+  static listCodesByAuthor = (req, res) => {
+    const author = req.query.author;
+    codes.find({ 'author': author }, (err, codes) => {
+      res.status(200).send(codes);
+    });
+  };
 }
 
 // exportar para usar o controlador junto às rotas (criaremos um arquivo para tal)
