@@ -1,8 +1,10 @@
-export const NavBtn = ({ src, children }) => {
+import { NavLink } from 'react-router-dom';
+
+export const NavBtn = ({ src, children, route }) => {
   return (
-    <a>
+    <NavLink to={route}>
       <img src={src} alt='' aria-hidden='true' />
       {children}
-    </a>
+    </NavLink>
   );
 };

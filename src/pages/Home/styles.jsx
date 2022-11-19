@@ -1,24 +1,5 @@
 import styled from 'styled-components';
 
-const MainMenu = styled.div`
-  display: none;
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    grid-area: menu;
-    width: 17rem;
-    & a {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      &:hover, &:focus {
-      opacity: .8;
-    }
-    }
-  }
-`;
-
 const EditorField = styled.div`
   margin: 2.5rem 0;
   @media screen and (min-width: 1280px) {
@@ -122,4 +103,4 @@ const Fieldset = styled.fieldset`
     }
 `;
 
-export { MainMenu, EditorField, Textarea, HightlightBtn, Form, Fieldset };
+export { EditorField, Textarea, HightlightBtn, Form, Fieldset };
