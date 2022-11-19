@@ -1,6 +1,6 @@
 // origin: https://hamburger-react.netlify.app/
 import { Divide as Hamburger } from 'hamburger-react';
-import { IoSearch } from 'react-icons/io5';
+import { IoSearch, IoLogIn } from 'react-icons/io5';
 
 import * as Styled from './styles.jsx';
 
@@ -17,8 +17,8 @@ export const Header = () => {
         <Hamburger size={32} label='Abrir menu' />
       </Styled.MenuWrapper>
       <Styled.User href='#'>
-        <img src="https://github.com/sucodelarangela.png" alt="" aria-hidden='true' />
-        sucodelarangela
+        <IoLogIn size={32} />
+        <span>Login</span>
       </Styled.User>
     </Styled.Header>
   );
