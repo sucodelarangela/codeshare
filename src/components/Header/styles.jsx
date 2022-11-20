@@ -13,15 +13,6 @@ const Header = styled.header`
   }
 `;
 
-const Logo = styled.div`
-  width: 9.0625rem;
-  height: 2.125rem;
-  background: white;
-  @media screen and (min-width: 1280px) {
-    grid-area: logo;
-  }
-`;
-
 const Search = styled.input`
   display: none;
   @media screen and (min-width: 768px) {
@@ -60,7 +51,8 @@ const MenuWrapper = styled.div`
   }
 `;
 
-const User = styled.a`
+const User = styled.button`
+  all: unset;
   display: none;
   @media screen and (min-width: 1280px) {
     display: flex;
@@ -84,4 +76,4 @@ const User = styled.a`
   }
 `;
 
-export { Header, Logo, Search, MenuWrapper, User };
+export { Header, Search, MenuWrapper, User };

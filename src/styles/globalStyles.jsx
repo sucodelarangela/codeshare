@@ -21,6 +21,7 @@ export const GlobalStyles = createGlobalStyle`
     --highlight-active: rgba(80, 129, 251, 0.24);
     --light-blue: #5081fb;
     --dark-blue: #051d3b;
+    --overlay: rgba(0, 0, 0, .5);
     --input: rgba(255, 255, 255, .16);
     --input-hover: rgba(255, 255, 255, .24);
     --white: rgba(255, 255, 255, 1);
@@ -72,6 +73,15 @@ export const GlobalStyles = createGlobalStyle`
       grid-template-columns: 17rem auto 17rem;
       gap: 2.5rem;
     }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--overlay);
   }
 
   .sr-only {

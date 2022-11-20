@@ -1,12 +1,19 @@
 // origin: https://hamburger-react.netlify.app/
 import { Divide as Hamburger } from 'hamburger-react';
 import { IoSearch, IoLogIn } from 'react-icons/io5';
+import LoginModal from './LoginModal.jsx';
 
 import * as Styled from './styles.jsx';
 
 import logo from 'assets/logo.svg';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [showDialog, setShowDialog] = useState(false);
+  function toggleDialog() {
+    setShowDialog((showDialog) => !showDialog);
+  }
+
   return (
     <Styled.Header>
       <img src={logo} alt="Codeshare home" />
@@ -16,10 +23,11 @@ export const Header = () => {
         <button><IoSearch size={32} /></button>
         <Hamburger size={32} label='Abrir menu' />
       </Styled.MenuWrapper>
-      <Styled.User href='#'>
+      <Styled.User onClick={toggleDialog}>
         <IoLogIn size={32} />
         <span>Login</span>
       </Styled.User>
+      {showDialog && <LoginModal setShowDialog={setShowDialog} />}
     </Styled.Header>
   );
 };
