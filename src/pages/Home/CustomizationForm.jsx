@@ -14,8 +14,8 @@ export const CustomizationForm = () => {
         <h3>Personalização</h3>
         <div>
           <label htmlFor='project__language' className='sr-only'>Escolha a linguagem do seu código</label>
-          <select name="languages" id="project__language">
-            <option value="Selecione ume linguagem" selected disabled>Selecione uma linguagem</option>
+          <select name="languages" id="project__language" defaultValue='Selecione uma linguagem'>
+            <option value="Selecione uma linguagem" disabled>Selecione uma linguagem</option>
             <option value="javascript">JavaScript</option>
             <option value="java">Java</option>
             <option value="react">React</option>
