@@ -9,7 +9,7 @@ import logo from 'assets/logo.svg';
 import { useState } from 'react';
 
 export const Header = () => {
-  const [showDialog, setShowDialog] = useState(false);
+  const [showDialog, setShowDialog] = useState(true);
   function toggleDialog() {
     setShowDialog((showDialog) => !showDialog);
   }

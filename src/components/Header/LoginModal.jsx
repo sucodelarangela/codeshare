@@ -1,22 +1,9 @@
 import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 export const LoginModal = styled.section`
-  /* background: var(--overlay);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* & .overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  } */
     position: absolute;
     background: var(--white);
     width: min(31rem, 90%);
@@ -38,6 +25,18 @@ export const LoginModal = styled.section`
     }
     & p {
       font-size: 18px;
+      &.register {
+        font-size: 14px;
+        color: var(--light-blue);
+        border-bottom: 1px solid var(--white);
+        width: fit-content;
+        margin: 0 auto 16px;
+        cursor: pointer;
+        transition: border .3s;
+        &:hover {
+          border-bottom: 1px solid var(--light-blue);
+        }
+      }
     }
     & form {
       display: flex;
@@ -79,6 +78,8 @@ export const LoginModal = styled.section`
 
 // eslint-disable-next-line react/display-name
 export default ({ setShowDialog }) => {
+  const [register, setRegister] = useState(false);
+
   useEffect(() => {
     function handleEscapeKey(event) {
       if (event.code === 'Escape') {
@@ -95,9 +96,22 @@ export default ({ setShowDialog }) => {
       <div className='overlay' onClick={() => setShowDialog(false)}></div>
       <LoginModal role='dialog'>
         <h2>Entrar</h2>
-        <p>Faça o login para usar o sistema</p>
+        <p>Faça o {register ? 'cadastro' : 'login'} para usar o sistema</p>
+        {!register && <p className='register' onClick={() => setRegister(true)}>Ainda não tem cadastro? Clique aqui!</p>}
         <hr />
         <form>
+          {register && (
+            <>
+              <label htmlFor='username'>Nome:</label>
+              <input
+                id='username'
+                type="text"
+                name="username"
+                placeholder='Insira seu nome'
+                required
+              />
+            </>
+          )}
           <label htmlFor='email'>E-mail:</label>
           <input
             id='email'
@@ -114,7 +128,19 @@ export default ({ setShowDialog }) => {
             placeholder='Insira sua senha'
             required
           />
-          <button>Entrar</button>
+          {register && (
+            <>
+              <label htmlFor='confirmPassword'>Senha:</label>
+              <input
+                id="confirmPassword"
+                type="password"
+                name="confirmPassword"
+                placeholder='Confirme sua senha'
+                required
+              />
+            </>
+          )}
+          {register ? <button>Cadastrar</button> : <button>Entrar</button>}
           <button className='close' aria-label='Fechar modal' type='button' onClick={() => setShowDialog(false)}>
             <IoMdClose size={24} />
           </button>
