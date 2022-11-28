@@ -1,5 +1,7 @@
 // import database so our app understands we have firebase
+// eslint-disable-next-line no-unused-vars
 import { app } from 'firebase/config';
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -34,7 +36,8 @@ export const useAuth = () => {
       );
 
       await updateProfile(user, {
-        displayName: data.displayName
+        displayName: data.displayName,
+        photoURL: data.photoURL
       });
 
       setLoading(false);

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useAuth } from 'hooks/useAuth';
 
 export const LoginModal = styled.section`
     position: absolute;
@@ -36,6 +37,14 @@ export const LoginModal = styled.section`
         &:hover {
           border-bottom: 1px solid var(--light-blue);
         }
+      }
+      &.error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 5px;
+        border-radius: 4px;
+        margin-top: 16px;
       }
     }
     & form {
@@ -79,6 +88,14 @@ export const LoginModal = styled.section`
 // eslint-disable-next-line react/display-name
 export default ({ setShowDialog }) => {
   const [register, setRegister] = useState(false);
+  const [displayName, setDisplayName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
+  const [error, setError] = useState(''); // this is a front end error
+
+  const { createUser, error: authError, loading } = useAuth();
 
   useEffect(() => {
     function handleEscapeKey(event) {
@@ -91,6 +108,35 @@ export default ({ setShowDialog }) => {
     return () => document.removeEventListener('keydown', handleEscapeKey);
   }, []);
 
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setError('');
+    const user = {
+      displayName,
+      email,
+      password,
+      photoURL
+    };
+    if (password != confirmPassword) {
+      setError('As senhas precisam ser iguais');
+      return;
+    }
+    const res = await createUser(user);
+    console.log(user);
+    setRegister(false);
+  };
+
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('logado');
+  };
+
   return (
     <>
       <div className='overlay' onClick={() => setShowDialog(false)}></div>
@@ -99,15 +145,17 @@ export default ({ setShowDialog }) => {
         <p>Faça o {register ? 'cadastro' : 'login'} para usar o sistema</p>
         {!register && <p className='register' onClick={() => setRegister(true)}>Ainda não tem cadastro? Clique aqui!</p>}
         <hr />
-        <form>
+        <form onSubmit={register ? handleRegister : handleSubmit}>
           {register && (
             <>
-              <label htmlFor='username'>Nome:</label>
+              <label htmlFor='displayName'>Nome ou apelido:</label>
               <input
-                id='username'
+                id='displayName'
                 type="text"
-                name="username"
+                name="displayName"
                 placeholder='Insira seu nome'
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
                 required
               />
             </>
@@ -118,6 +166,8 @@ export default ({ setShowDialog }) => {
             type="email"
             name="email"
             placeholder='Insira seu e-mail'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <label htmlFor='password'>Senha:</label>
@@ -126,21 +176,35 @@ export default ({ setShowDialog }) => {
             type="password"
             name="password"
             placeholder='Insira sua senha'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           {register && (
             <>
-              <label htmlFor='confirmPassword'>Senha:</label>
+              <label htmlFor='confirmPassword'>Confirmar senha:</label>
               <input
                 id="confirmPassword"
                 type="password"
                 name="confirmPassword"
                 placeholder='Confirme sua senha'
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
+              />
+              <label htmlFor='photoURL'>Foto de usuário:</label>
+              <input
+                id="photoURL"
+                type="text"
+                name="photoURL"
+                placeholder='Insira uma URL'
+                value={photoURL}
+                onChange={(e) => setPhotoURL(e.target.value)}
               />
             </>
           )}
-          {register ? <button>Cadastrar</button> : <button>Entrar</button>}
+          {register && loading ? <button type='submit' disabled>Cadastrar</button> : register && !loading ? <button type='submit'>Cadastrar</button> : <button type='submit'>Entrar</button>}
+          {error && <p className='error'>{error}</p>}
           <button className='close' aria-label='Fechar modal' type='button' onClick={() => setShowDialog(false)}>
             <IoMdClose size={24} />
           </button>
