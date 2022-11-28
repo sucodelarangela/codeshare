@@ -52,7 +52,7 @@ export const useAuth = () => {
       if (error.message.includes('Password')) {
         sysErrMsg = 'A senha precisa conter, pelo menos, 6 caracteres.';
       } else if (error.message.includes('email-already')) {
-        sysErrMsg = 'E-mail já cadastrado.';
+        sysErrMsg = 'E-mail já cadastrado. Faça seu login.';
       } else {
         sysErrMsg = 'Ocorreu um erro. Tente novamente mais tarde.';
       }

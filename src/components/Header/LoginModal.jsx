@@ -40,9 +40,9 @@ export const LoginModal = styled.section`
         }
       }
       &.error {
-        color: #721c24;
-        background-color: #f8d7da;
-        border: 1px solid #f5c6cb;
+        color: var(--dark-red);
+        background-color: var(--light-red);
+        border: 1px solid var(--red-border);
         padding: 5px;
         border-radius: 4px;
         margin-top: 16px;
@@ -124,7 +124,6 @@ export default ({ setShowDialog }) => {
     }
     const res = await createUser(user);
     setRegister(false);
-    setShowDialog(false);
   };
 
   const handleSubmit = async (e) => {
@@ -135,7 +134,6 @@ export default ({ setShowDialog }) => {
       password
     };
     const res = await login(user);
-    setShowDialog(false);
   };
 
   useEffect(() => {

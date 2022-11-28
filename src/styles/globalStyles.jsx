@@ -25,6 +25,9 @@ export const GlobalStyles = createGlobalStyle`
     --input: rgba(255, 255, 255, .16);
     --input-hover: rgba(255, 255, 255, .24);
     --white: rgba(255, 255, 255, 1);
+    --dark-red: #721c24;
+    --light-red: #f8d7da;
+    --red-border: #f5c6cb;
     --laranja: #ffc46b;
     --linha: rgba(255, 255, 255, 1);
     --menu-mobile: #2d415b;
