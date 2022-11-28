@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
 import { useEffect } from 'react';
@@ -95,7 +96,7 @@ export default ({ setShowDialog }) => {
   const [photoURL, setPhotoURL] = useState('');
   const [error, setError] = useState(''); // this is a front end error
 
-  const { createUser, error: authError, loading } = useAuth();
+  const { login, createUser, error: authError, loading } = useAuth();
 
   useEffect(() => {
     function handleEscapeKey(event) {
@@ -122,8 +123,19 @@ export default ({ setShowDialog }) => {
       return;
     }
     const res = await createUser(user);
-    console.log(user);
     setRegister(false);
+    setShowDialog(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    const user = {
+      email,
+      password
+    };
+    const res = await login(user);
+    setShowDialog(false);
   };
 
   useEffect(() => {
@@ -131,11 +143,6 @@ export default ({ setShowDialog }) => {
       setError(authError);
     }
   }, [authError]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('logado');
-  };
 
   return (
     <>
