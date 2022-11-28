@@ -1,6 +1,7 @@
 // origin: https://hamburger-react.netlify.app/
 import { Divide as Hamburger } from 'hamburger-react';
 import { IoSearch, IoLogIn } from 'react-icons/io5';
+import { FaUser } from 'react-icons/fa';
 import LoginModal from './LoginModal.jsx';
 
 import * as Styled from './styles.jsx';
@@ -37,7 +38,7 @@ export const Header = () => {
       <Styled.User onClick={user ? toggleMenu : toggleDialog} >
         {/* <IoLogIn size={32} />
         <span>Login</span> */}
-        {user ? <img src={user.photoURL} alt="" aria-hidden='true' /> : <IoLogIn size={32} />}
+        {user ? user.photoURL ? <img src={user.photoURL} alt="" aria-hidden='true' /> : <FaUser size={32} /> : <IoLogIn size={32} />}
         {user ? <span>{user.displayName}</span> : <span>Login</span>}
       </Styled.User>
       {showDialog && <LoginModal setShowDialog={setShowDialog} />}
