@@ -3,11 +3,17 @@ import mongoose from 'mongoose';
 // informando que este arquivo é um schema
 const codeSchema = new mongoose.Schema({
   id: String,
-  code: [{
-    content: { type: String, required: true },
-    likes: { type: Number, default: 0 },
-    color: { type: String, required: true }
-  }],
+  projectName: { type: String, required: true },
+  description: { type: String, required: true },
+  code: { type: String, required: true },
+  language: String,
+  color: { type: String, default: '#6bd1ff' },
+  // likes e comentários serão implementados futuramente
+  // likes: { type: Number, default: 0 },
+  // comments: [{
+  //   content: { type: String },
+  //   commentAuthor: { type: mongoose.Schema.Types.ObjectId, ref: 'authors', required: true }
+  // }],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'authors', required: true } // indicamos que o tipo do autor, agora, é uma referência a outro schema existente, no caso, authors
 });
 
