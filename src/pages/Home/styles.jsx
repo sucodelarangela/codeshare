@@ -10,7 +10,7 @@ const EditorField = styled.div`
 
 const Textarea = styled.div`
   padding: 2rem;
-  background: var(--cian);
+  /* background: var(--cian); */
   border-radius: 8px;
   margin-bottom: 2rem;
   & .editor__dots {

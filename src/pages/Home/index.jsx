@@ -1,17 +1,20 @@
 import * as Styled from './styles.jsx';
+import { useState } from 'react';
 
 import MainMenu from 'components/MainMenu.jsx';
 import { CodeEditor } from './CodeEditor.jsx';
 import { CustomizationForm } from './CustomizationForm.jsx';
 
 export const Home = () => {
+  const [color, setColor] = useState('#ff0000');
+
   return (
     <section className='home'>
       <MainMenu />
       <Styled.EditorField>
-        <CodeEditor />
+        <CodeEditor color={color} />
       </Styled.EditorField>
-      <CustomizationForm />
+      <CustomizationForm color={color} setColor={setColor} />
       {/* <Styled.Form>
         <Styled.Fieldset>
           <h3>Seu projeto</h3>

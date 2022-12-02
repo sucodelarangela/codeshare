@@ -1,6 +1,6 @@
 import * as Styled from './styles';
 
-export const CustomizationForm = () => {
+export const CustomizationForm = ({ color, setColor }) => {
   return (
     <Styled.Form>
       <Styled.Fieldset>
@@ -23,7 +23,7 @@ export const CustomizationForm = () => {
             <option value="typescript">TypeScript</option>
           </select>
           <label htmlFor='project__color' className='sr-only'>Selecione uma cor para o seu card</label>
-          <input id='project__color' type='color' />
+          <input id='project__color' type='color' value={color} onChange={(e) => setColor(e.target.value)} />
         </div>
       </Styled.Fieldset>
     </Styled.Form>
