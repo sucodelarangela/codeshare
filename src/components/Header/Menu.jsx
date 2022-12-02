@@ -114,13 +114,13 @@ export default ({ setShowMenu }) => {
       setTimeout(() => {
         logout();
         setShowMenu();
-      }, 3100);
+      }, 2100);
     }
   }, [open]);
 
   return (
     <Menu>
-      <Toast.Provider swipeDirection='right' duration={3000}>
+      <Toast.Provider swipeDirection='right' duration={2000}>
         <button className='logout' onClick={() => setOpen(true)}>Fazer logout</button>
         <ToastRoot open={open} onOpenChange={setOpen}>
           <ToastTitle>Logout com sucesso!</ToastTitle>
