@@ -4,6 +4,7 @@ import { IoMdClose } from 'react-icons/io';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
+import { api } from 'api/api';
 
 export const LoginModal = styled.section`
     position: absolute;
@@ -123,6 +124,7 @@ export default ({ setShowDialog }) => {
       return;
     }
     const res = await createUser(user);
+    api.post('/authors', { name: displayName });
     setRegister(false);
   };
 
