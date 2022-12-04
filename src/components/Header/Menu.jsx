@@ -121,6 +121,7 @@ export default ({ setShowMenu }) => {
         });
       });
     await api.delete(`/authors/${id}`);
+    await api.delete(`/codes/byauthor/${id}`);
     deleteAccount();
     setShowMenu(false);
   }
