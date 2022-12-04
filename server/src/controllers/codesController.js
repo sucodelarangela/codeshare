@@ -69,6 +69,17 @@ class CodeController {
       res.status(200).send(codes);
     });
   };
+
+  static deleteCodesByAuthor = (req, res) => {
+    const { author } = req.params;
+    codes.deleteMany({ 'author': author }, (err) => {
+      if (!err) {
+        res.status(200).send('Codes deleted successfully');
+      } else {
+        status(500).send({ message: err.message });
+      }
+    });
+  };
 }
 
 // exportar para usar o controlador junto às rotas (criaremos um arquivo para tal)

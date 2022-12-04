@@ -12,7 +12,8 @@ router
   .get('/codes/:id', CodeController.listCodesById)
   .post('/codes', CodeController.registerCode)
   .put('/codes/:id', CodeController.updateCode)
-  .delete('/codes/:id', CodeController.deleteCode);
+  .delete('/codes/:id', CodeController.deleteCode)
+  .delete('/codes/byauthor/:author', CodeController.deleteCodesByAuthor);
 
 // exportaremos para o app.js
 export default router;
