@@ -6,7 +6,7 @@ import { CodeEditor } from './CodeEditor.jsx';
 import { CustomizationForm } from './CustomizationForm.jsx';
 
 export const Home = () => {
-  const [color, setColor] = useState('#ff0000');
+  const [color, setColor] = useState('#6bd1ff');
 
   return (
     <section className='home'>

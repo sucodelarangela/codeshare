@@ -3,6 +3,8 @@ import { useAuth } from 'hooks/useAuth.js';
 import * as Toast from '@radix-ui/react-toast';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { api } from 'api/api';
+import { useAuthValue } from 'context/AuthContext';
 
 const Menu = styled.div`
   background: var(--white);
@@ -12,16 +14,25 @@ const Menu = styled.div`
   position: absolute;
   right: 32px;
   top: 100px;
-  .logout {
+  button {
+    display: block;
     padding: 8px;
+    width: 100%;
+    border-radius: 4px;
+    transition: .3s;
+  }
+  .close {
+    margin-top: 8px;
     color: var(--dark-red);
     background-color: var(--light-red);
     border: 1px solid var(--red-border);
-    border-radius: 4px;
-    transition: .3s;
     &:hover {
       background-color: var(--red-border);
     }
+  }
+  .logout {
+    color: var(--dark-blue);
+    border: 1px solid #d0d0d7;
   }
 `;
 
@@ -96,7 +107,23 @@ const ToastDescription = styled(Toast.Description)`
 // eslint-disable-next-line react/display-name
 export default ({ setShowMenu }) => {
   const [open, setOpen] = useState(false);
-  const { logout } = useAuth();
+  const { logout, deleteAccount } = useAuth();
+  const { user } = useAuthValue();
+
+  async function handleDelete() {
+    let id;
+    await api.get('/authors')
+      .then(res => {
+        res.data.forEach(author => {
+          if (author.name === user.displayName) {
+            id = author._id;
+          }
+        });
+      });
+    await api.delete(`/authors/${id}`);
+    deleteAccount();
+    setShowMenu(false);
+  }
 
   useEffect(() => {
     function handleEscapeKey(event) {
@@ -122,6 +149,7 @@ export default ({ setShowMenu }) => {
     <Menu>
       <Toast.Provider swipeDirection='right' duration={2000}>
         <button className='logout' onClick={() => setOpen(true)}>Fazer logout</button>
+        <button className='btn close' onClick={handleDelete}>Deletar conta</button>
         <ToastRoot open={open} onOpenChange={setOpen}>
           <ToastTitle>Logout com sucesso!</ToastTitle>
           <ToastDescription>Você fez logout do sistema.</ToastDescription>

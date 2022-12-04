@@ -125,7 +125,7 @@ export default ({ setShowDialog }) => {
     }
     const res = await createUser(user);
     api.post('/authors', { name: displayName });
-    setRegister(false);
+    setShowDialog(false);
   };
 
   const handleSubmit = async (e) => {

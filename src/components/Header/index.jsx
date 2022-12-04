@@ -16,8 +16,6 @@ export const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const { user } = useAuthValue();
 
-  console.log(user);
-
   function toggleDialog() {
     setShowDialog((showDialog) => !showDialog);
   }

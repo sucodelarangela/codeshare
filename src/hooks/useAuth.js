@@ -7,7 +7,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
-  signOut
+  signOut,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  deleteUser
 } from 'firebase/auth';
 import { useState, useEffect } from 'react';
 
@@ -92,6 +95,26 @@ export const useAuth = () => {
     }
   };
 
+  // DELETE USER = requer reautenticação
+  const deleteAccount = async () => {
+    checkIfIsCancelled();
+    setLoading(true);
+
+    try {
+      const user = auth.currentUser;
+      const userProvidedPassword = prompt('Insira sua senha para deletar sua conta');
+      const credential = EmailAuthProvider.credential(
+        auth.currentUser.email,
+        userProvidedPassword
+      );
+      await reauthenticateWithCredential(user, credential);
+      deleteUser(user);
+    } catch (error) {
+      console.error(error.message);
+    }
+    setLoading(false);
+  };
+
   // CLEANUP
   useEffect(() => {
     setCancelled(true);
@@ -103,6 +126,7 @@ export const useAuth = () => {
     error,
     loading,
     logout,
-    login
+    login,
+    deleteAccount
   };
 };
