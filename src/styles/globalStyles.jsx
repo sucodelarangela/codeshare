@@ -38,10 +38,11 @@ export const GlobalStyles = createGlobalStyle`
 
     --inter: 'Inter', sans-serif;
     --roboto: 'Roboto Mono', monospace;
+    --rubik: 'Rubik 80s Fade', monospace;
   }
 
   body {
-    background: var(--dark-blue);
+    background: var(--black);
     padding: 1rem;
     height: 100vh;
     @media screen and (min-width: 768px) {
@@ -76,6 +77,22 @@ export const GlobalStyles = createGlobalStyle`
       grid-template-columns: 17rem auto 17rem;
       gap: 2.5rem;
     }
+  }
+
+  .community {
+    @media screen and (min-width: 1280px) {
+      display: grid;
+      grid-template-areas: 'menu cards';
+      grid-template-columns: 17rem auto;
+      gap: 2.5rem;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2.5rem;
   }
 
   .overlay {

@@ -5,6 +5,24 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   gap: 2.5rem;
+  .home__title {
+    font-family: var(--rubik);
+    font-size: 32px;
+    color: var(--cian);
+    &::after {
+      content: '|';
+      margin-left: 4px;
+      animation: blink 0.8s infinite;
+    }
+  }
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
   @media screen and (min-width: 1280px) {
     padding-bottom: 2.5rem;
     display: grid;

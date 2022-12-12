@@ -26,7 +26,8 @@ export const Header = () => {
 
   return (
     <Styled.Header>
-      <img src={logo} alt="Codeshare home" />
+      {/* <img src={logo} alt="Codeshare home" /> */}
+      <h1 className='home__title'>codeshare</h1>
       <label htmlFor="home__search" className='sr-only'>Busque por algo</label>
       <Styled.Search id='home__search' type='text' placeholder='Busque por algo...' />
       <Styled.MenuWrapper>
