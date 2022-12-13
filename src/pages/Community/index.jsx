@@ -13,13 +13,15 @@ export const Community = () => {
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
         {!loading && cards && cards.map(card => (
-          <Card key={card._id} color={card.color}>
-            <p>{card.projectName}</p>
-            <p>{card.description}</p>
-            <p>{card.code}</p>
-            <p>{card.language}</p>
-            <p>{card.author.name}</p>
-          </Card>
+          <Card
+            key={card._id}
+            color={card.color}
+            code={card.code}
+            project={card.projectName}
+            description={card.description}
+            language={card.language}
+            author={card.author.name}
+          />
         ))}
       </div>
     </section>

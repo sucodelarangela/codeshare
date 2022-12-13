@@ -92,6 +92,7 @@ export const GlobalStyles = createGlobalStyle`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+    grid-area: cards;
     gap: 2.5rem;
   }
 
