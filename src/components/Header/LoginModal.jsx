@@ -124,7 +124,7 @@ export default ({ setShowDialog }) => {
       return;
     }
     const res = await createUser(user);
-    api.post('/authors', { name: displayName });
+    api.post('/authors', { name: displayName, photoURL: photoURL });
     setShowDialog(false);
   };
 

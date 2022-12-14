@@ -21,6 +21,7 @@ export const Community = () => {
             description={card.description}
             language={card.language}
             author={card.author.name}
+            photo={card.author.photoURL}
           />
         ))}
       </div>

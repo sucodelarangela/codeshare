@@ -66,7 +66,7 @@ const CodeUser = styled(User).attrs({ as: 'div' })`
 `;
 
 // eslint-disable-next-line react/display-name
-export default ({ color, code, project, description, language, author }) => {
+export default ({ color, code, project, description, language, photo, author }) => {
   return (
     <Card color={color}>
       <div className='card__code'>
@@ -77,7 +77,7 @@ export default ({ color, code, project, description, language, author }) => {
         <h2>{project}</h2>
         <p>{description}</p>
         <CodeUser>
-          <img src="https://github.com/sucodelarangela.png" alt="" aria-hidden='true' />
+          <img src={photo} alt="" aria-hidden='true' />
           <p>{author}</p>
         </CodeUser>
       </div>
