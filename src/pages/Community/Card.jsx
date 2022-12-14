@@ -5,9 +5,10 @@ import { ReactComponent as MacDots } from 'assets/mac_buttons.svg';
 
 const Card = styled(Textarea)`
   white-space: pre-wrap;
-  height: fit-content;
+  margin-bottom: 0;
+  /* height: fit-content;
   background: ${props => props.color ? props.color : '#6bd1ff'};
-  position: relative;
+  position: relative; */
   & svg {
     position: relative;
     margin-bottom: 1rem;
@@ -18,14 +19,27 @@ const Card = styled(Textarea)`
     border-radius: 4px;
     padding: 1rem;
     font-family: var(--roboto);
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: calc(100% + 64px);
+      height: calc(100% + 64px);
+      background: ${props => props.color ? props.color : '#6bd1ff'};
+      z-index: -1;
+      top: -2rem;
+      left: -2rem;
+      border-radius: 8px;
+    }
   }
   & .card__info{
+    position: relative;
+    z-index: -2;
     background: var(--overlay);
-    position: absolute;
-    left: 0;
-    width: 100%;
-    padding: 56px 24px 24px;
-    z-index: -1;
+    margin-top: 24px;
+    margin-left: -32px;
+    width: calc(100% + 64px);
+    padding: 24px;
     border-radius: 0 0 8px 8px;
     & > h2 {
       font-size: 1.25rem;
@@ -41,6 +55,14 @@ const CodeUser = styled(User).attrs({ as: 'div' })`
   display: flex;
   pointer-events: none;
   padding: 0;
+  align-items: center;
+  gap: .5rem;
+  /* border-radius: 0.5rem; */
+  /* width: fit-content; */
+  & > img {
+    clip-path: circle();
+    width: 2rem;
+  }
 `;
 
 // eslint-disable-next-line react/display-name

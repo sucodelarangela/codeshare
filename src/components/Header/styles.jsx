@@ -5,6 +5,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   gap: 2.5rem;
+  padding-bottom: 1rem;
   .home__title {
     font-family: var(--rubik);
     font-size: 32px;
@@ -22,6 +23,9 @@ const Header = styled.header`
     100% {
       opacity: 0;
     }
+  }
+  @media screen and (min-width: 768px) {
+    padding-bottom: 2rem;
   }
   @media screen and (min-width: 1280px) {
     padding-bottom: 2.5rem;
