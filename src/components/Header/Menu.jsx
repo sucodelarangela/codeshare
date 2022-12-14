@@ -14,6 +14,7 @@ const Menu = styled.div`
   position: absolute;
   right: 32px;
   top: 100px;
+  z-index: 10;
   button {
     display: block;
     padding: 8px;

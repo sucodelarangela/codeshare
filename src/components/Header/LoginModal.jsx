@@ -16,6 +16,7 @@ export const LoginModal = styled.section`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 10;
     & h2, p, label, input {
       color: var(--dark-blue);
     }
