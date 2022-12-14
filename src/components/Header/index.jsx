@@ -6,7 +6,6 @@ import LoginModal from './LoginModal.jsx';
 
 import * as Styled from './styles.jsx';
 
-import logo from 'assets/logo.svg';
 import { useState } from 'react';
 import { useAuthValue } from 'context/AuthContext.jsx';
 import Menu from './Menu.jsx';

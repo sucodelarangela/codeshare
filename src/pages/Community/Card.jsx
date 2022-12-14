@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Textarea } from 'pages/Home/styles';
 import { User } from 'components/Header/styles';
 import { ReactComponent as MacDots } from 'assets/mac_buttons.svg';
+import { FaUser } from 'react-icons/fa';
 
 const Card = styled(Textarea)`
   white-space: pre-wrap;
@@ -77,7 +78,7 @@ export default ({ color, code, project, description, language, photo, author }) 
         <h2>{project}</h2>
         <p>{description}</p>
         <CodeUser>
-          <img src={photo} alt="" aria-hidden='true' />
+          <img src={photo ? photo : <FaUser size={32} />} alt="" aria-hidden='true' />
           <p>{author}</p>
         </CodeUser>
       </div>
