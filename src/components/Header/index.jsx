@@ -31,16 +31,14 @@ export const Header = () => {
       <Styled.Search id='home__search' type='text' placeholder='Busque por algo...' />
       <Styled.MenuWrapper>
         <button><IoSearch size={32} /></button>
-        <Hamburger size={32} label='Abrir menu' />
+        <Hamburger size={32} label='Abrir menu' toggled={showMenu} toggle={toggleMenu} />
       </Styled.MenuWrapper>
       <Styled.User onClick={user ? toggleMenu : toggleDialog} >
-        {/* <IoLogIn size={32} />
-        <span>Login</span> */}
         {user ? user.photoURL ? <img src={user.photoURL} alt="" aria-hidden='true' /> : <FaUser size={32} /> : <IoLogIn size={32} />}
         {user ? <span>{user.displayName}</span> : <span>Login</span>}
       </Styled.User>
       {showDialog && <LoginModal setShowDialog={setShowDialog} />}
-      {showMenu && <Menu setShowMenu={setShowMenu} />}
+      {showMenu && <Menu setShowMenu={setShowMenu} setShowDialog={setShowDialog} />}
     </Styled.Header>
   );
 };

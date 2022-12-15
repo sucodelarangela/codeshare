@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { api } from 'api/api';
 import { useAuthValue } from 'context/AuthContext';
+import { NavBtn } from 'components/NavBtn';
+import editorIcon from 'assets/editor_icon.svg';
+import commIcon from 'assets/comm_icon.svg';
 
 const Menu = styled.div`
   background: var(--white);
@@ -15,6 +18,18 @@ const Menu = styled.div`
   right: 32px;
   top: 100px;
   z-index: 10;
+  a {
+    display: flex;
+    color: var(--dark-blue);
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 5px;
+  }
+  hr {
+    border: 1px solid var(--light-blue);
+    margin-bottom: 16px;
+  }
   button {
     display: block;
     padding: 8px;
@@ -39,8 +54,8 @@ const Menu = styled.div`
 
 const ToastViewport = styled(Toast.Viewport)`
   position: fixed;
-  bottom: 0;
-  right: 0;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   padding: 25px;
@@ -81,7 +96,7 @@ const ToastRoot = styled(Toast.Root)`
 
   @keyframes slideIn {
     from {
-      transform: translateX(calc(100% + 25px));
+      transform: translateX(calc(0% - 25px));
     }
     to {
       transform: translateX(0);
@@ -106,7 +121,7 @@ const ToastDescription = styled(Toast.Description)`
 `;
 
 // eslint-disable-next-line react/display-name
-export default ({ setShowMenu }) => {
+export default ({ setShowMenu, setShowDialog }) => {
   const [open, setOpen] = useState(false);
   const { logout, deleteAccount } = useAuth();
   const { user } = useAuthValue();
@@ -149,8 +164,15 @@ export default ({ setShowMenu }) => {
 
   return (
     <Menu>
-      <Toast.Provider swipeDirection='right' duration={2000}>
-        <button className='logout' onClick={() => setOpen(true)}>Fazer logout</button>
+      <Toast.Provider swipeDirection='left' duration={2000}>
+        <NavBtn className='navlink' route='/' src={editorIcon} style={{ display: 'block' }}>Editor de código</NavBtn>
+        <NavBtn className='navlink' route='/community' src={commIcon}>Comunidade</NavBtn>
+        <hr />
+        {user ?
+          <button className='logout' onClick={() => setOpen(true)}>Fazer logout</button>
+          :
+          <button className='logout' onClick={() => { setShowDialog(true); setShowMenu(false); }}>Fazer login</button>
+        }
         <button className='btn close' onClick={handleDelete}>Deletar conta</button>
         <ToastRoot open={open} onOpenChange={setOpen}>
           <ToastTitle>Logout com sucesso!</ToastTitle>
