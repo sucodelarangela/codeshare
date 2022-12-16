@@ -11,6 +11,10 @@
     "lint:fix": "eslint \"./src/**/*.{js,jsx}\" --fix"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/lab": "^5.0.0-alpha.112",
+    "@mui/material": "^5.11.0",
     "@radix-ui/react-toast": "^1.1.2",
     "axios": "^1.2.0",
     "firebase": "^9.14.0",
