@@ -7,12 +7,9 @@ import { FaUser } from 'react-icons/fa';
 const Card = styled(Textarea)`
   white-space: pre-wrap;
   margin-bottom: 0;
-  /* height: fit-content;
-  background: ${props => props.color ? props.color : '#6bd1ff'};
-  position: relative; */
+  padding: 32px 32px 0;
   & svg {
     position: relative;
-    margin-bottom: 1rem;
   }
   & .card__code {
     background: var(--black);
@@ -58,8 +55,6 @@ const CodeUser = styled(User).attrs({ as: 'div' })`
   padding: 0;
   align-items: center;
   gap: .5rem;
-  /* border-radius: 0.5rem; */
-  /* width: fit-content; */
   & > img {
     clip-path: circle();
     width: 2rem;

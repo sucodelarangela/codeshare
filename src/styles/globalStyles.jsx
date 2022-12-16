@@ -93,10 +93,8 @@ export const GlobalStyles = createGlobalStyle`
     grid-auto-flow: row;
     grid-template-rows: max-content;
     @media screen and (min-width: 1280px) {
-      grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;
       grid-area: cards;
-      gap: 2.5rem;
     }
   }
 

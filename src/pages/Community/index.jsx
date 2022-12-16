@@ -1,6 +1,7 @@
 import MainMenu from 'components/MainMenu';
 import useFetch from 'hooks/useFetch';
 import Card from './Card';
+import Masonry from '@mui/lab/Masonry';
 
 export const Community = () => {
   const { data: cards, loading, error } = useFetch('http://localhost:8000/codes');
@@ -12,19 +13,21 @@ export const Community = () => {
       <div className='cards'>
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
-        {!loading && cards && cards.map(card => (
-          <Card
-            key={card._id}
-            color={card.color}
-            code={card.code}
-            project={card.projectName}
-            description={card.description}
-            language={card.language}
-            author={card.author.name}
-            photo={card.author.photoURL}
-          />
-        ))}
+        <Masonry columns={2} spacing={4}>
+          {!loading && cards && cards.map(card => (
+            <Card
+              key={card._id}
+              color={card.color}
+              code={card.code}
+              project={card.projectName}
+              description={card.description}
+              language={card.language}
+              author={card.author.name}
+              photo={card.author.photoURL}
+            />
+          ))}
+        </Masonry>
       </div>
-    </section>
+    </section >
   );
 };
