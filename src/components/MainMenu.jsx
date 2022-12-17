@@ -6,6 +6,9 @@ import commIcon from 'assets/comm_icon.svg';
 
 const MainMenu = styled.div`
   display: none;
+  .MuiMasonry-root {
+    width: auto;
+  } 
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: column;

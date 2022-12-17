@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  * {
+* {
     border: 0;
     box-sizing: border-box;
     margin: 0;
@@ -10,8 +10,8 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1rem;
     transition: .3s;
     color: var(--white);
-  }
-      
+  }  
+  
   :root {
     /* Colors */
     --black: #141414;
@@ -39,7 +39,7 @@ export const GlobalStyles = createGlobalStyle`
     --inter: 'Inter', sans-serif;
     --roboto: 'Roboto Mono', monospace;
     --rubik: 'Rubik 80s Fade', monospace;
-  }
+  }  
 
   body {
     background: var(--black);
@@ -47,37 +47,37 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
     @media screen and (min-width: 768px) {
       padding: 2rem;
-    }
-  }
+    }  
+  }  
 
   body, button, input, textarea {
     font-family: var(--inter);
     color: var(--white);
-  }
+  }  
 
   h3 {
     padding-bottom: 0;
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: .4rem;
-  }
+  }  
 
   a {
     cursor: pointer;
-  }
+  }  
 
   legend {
     padding-bottom: 1rem;
-  }
+  }  
 
   .home {
     @media screen and (min-width: 1280px) {
       display: grid;
-      grid-template-areas: 'menu editor form';
+      grid-template-areas: 'menu editor form';  
       grid-template-columns: 17rem auto 17rem;
       gap: 2.5rem;
     }
-  }
+  }  
 
   .community {
     @media screen and (min-width: 1280px) {
@@ -85,18 +85,18 @@ export const GlobalStyles = createGlobalStyle`
       grid-template-areas: 'menu cards';
       grid-template-columns: 17rem auto;
       gap: 2.5rem;
-    }
-  }
+    }  
+  }  
 
   .cards {
     display: grid;
     grid-auto-flow: row;
-    grid-template-rows: max-content;
+    grid-template-columns: 100%;
     @media screen and (min-width: 1280px) {
-      grid-template-rows: auto;
+      grid-template-rows: auto;  
       grid-area: cards;
     }
-  }
+  }  
 
   .overlay {
     position: absolute;

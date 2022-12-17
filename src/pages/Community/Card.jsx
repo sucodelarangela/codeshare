@@ -8,6 +8,7 @@ const Card = styled(Textarea)`
   white-space: pre-wrap;
   margin-bottom: 0;
   padding: 32px 32px 0;
+  width: 100%;
   & svg {
     position: relative;
   }
