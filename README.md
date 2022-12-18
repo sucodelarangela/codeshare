@@ -4,7 +4,7 @@
 
 </div>
 
-<!-- _[Read it in English](#English)_ -->
+_[Read it in English](#English)_
 
 O **CodeShare** é uma plataforma de compartilhamento de código, similar a uma rede social para desenvolvedores. Trata-se de uma releitura de um [projeto desenvolvido no começo da minha carreira](https://github.com/sucodelarangela/alura-challenge-front-end), na época desenvolvido com JavaScript, HTML e CSS, além de algumas bibliotecas extras, e que utilizava o _localStorage_ como forma de armazenamento dos dados.
 
@@ -19,18 +19,37 @@ Esta nova versão está sendo desenvolvida atualmente com React, além de contar
 | 🔥 Desafio     | [Design no Figma](https://www.figma.com/file/mhAelfm31DohdGVS1iuDGY/Alura-Challenge---Edi%C3%A7%C3%A3o-Front-end-(Copy)?node-id=207%253A729) |
 
 ![](https://raw.githubusercontent.com/sucodelarangela/imersao-react-next/main/public/og-image.png#vitrinedev) 
-
-## Detalhes do projeto
+-->
 
 <div>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-  <img src="https://img.shields.io/badge/Next-ffffff?style=for-the-badge&logo=nextdotjs&logoColor=000000"/>
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/mongodb-ffffff?style=for-the-badge&logo=mongodb&logoColor=47A248"/>
   <img src="https://img.shields.io/badge/styled components-3C3C3C?style=for-the-badge&logo=styled-components&logoColor=DB7093">
-  <img src="https://img.shields.io/badge/supabase-1C1C1C?style=for-the-badge&logo=supabase&logoColor=3ECF8E">
-  <img src="https://img.shields.io/badge/radix ui-32275F?style=for-the-badge">
+  <img src="https://img.shields.io/badge/firebase-051e34?style=for-the-badge&logo=firebase&logoColor=FFCA28">
+  <img src="https://img.shields.io/badge/axios-ffffff?style=for-the-badge&logo=axios&logoColor=5A29E4">
+  <img src="https://img.shields.io/badge/mui-ffffff?style=for-the-badge&logo=mui&logoColor=007FFF">
 </div>
 
+## 📈 Status de Desenvolvimento
+
+- [x] Criação do banco de dados com MongoDb Atlas, definição de _models_, _controllers_ e rotas;
+- [x] Inicialização do projeto com Vite e configurações iniciais (ESLint, _absolute imports_, etc.);
+- [x] Desenvolvimento do design básico das páginas da aplicação: estilização com _styled-components_ e definições das rotas para o _react-router-dom_;
+- [x] Criação do _AuthContext_ que compartilhará as informações de usuário logado entre páginas;
+- [x] Integração com o _Firebase_ para autenticação do usuário e criação de um _custom hook_ para interações de _login, logout_ e exclusão de conta (_useAuth_);
+- [x] Criação de _dialog_ com formulário de login e cadastro de usuários, com fechamento por botão, por clique no _overlay_ ou com a tecla ESC (para melhor acessibilidade);
+- [x] Criação de um _toast_ informando que o usuário foi logado (a melhorar);
+- [x] Integração com a API do _MongoDb_ para GET, POST e DELETE de usuários quando na autenticação, cadastro e exclusão de conta;
+- [x] Criação de um _custom hook_ para busca de dados na API (_useFetch_) e alimentação dinâmica dos Cards na página de Comunidade;
+- [x] Organização do grid dos Cards com o uso do componente _Masonry_ do _Material UI_ para otimização de espaço em tela;
+- [ ] Integração do editor de códigos com o banco de dados do _MongoDb_ para funcionalidade de criação e edição de novos códigos na página Comunidade;
+- [ ] Criação de uma página Dashboard para gerenciamento de códigos por parte do usuário logado (similar ao Dashboard do projeto [**MiniBlog**](http://curso-react-udemy.vercel.app/));
+- [ ] Melhorar de forma geral a UX da _dialog_ de _login_;
+- [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
+- [ ] Criação de opção de idiomas pt/br/en (a avaliar).
+
+<!--
 A imersão contemplou o uso de **Next.js** para o desenvolvimento da UI da aplicação, com o menu, a função de busca dos vídeos cadastrados, a estilização e definição de tema claro e tema escuro com **styled-components**, bem como mostrou como criar um banco de dados para cadastro dos vídeos na plataforma **Supabase**.
 
 Como atividades adicionais, criei outras opções de tema além do claro/escuro, trocando o _toggle_ feito durante o evento por um _select_ com as opções de tema (esse _select_ foi criado com **Radix UI**). Também implementei a opção de escolher dentre três playlists diferentes para salvar os vídeos, pois no evento foi mostrado apenas como salvar no Supabase em uma única playlist pré-definida. Para finalizar a aplicação, criei a funcionalidade de excluir um vídeo de uma determinada playlist, bastando clicar no botão no canto superior direito da _thumbnail_.
@@ -50,23 +69,41 @@ Para cadastrar novos vídeos, basta:
 - Clicar no botão "Ver thumbnail" para extrair a imagem do vídeo;
 - Clicar em "Cadastrar" para salva-lo na playlist especificada.
 
-<a href='#top'>🔼 Voltar ao topo</a>
-
 -->
+
+<a href='#top'>🔼 Voltar ao topo</a>
 
 ---
 
-<!-- <div id="English">
+<div id="English">
 
 _English version_
 
 </div>
 
-## 🔎 Overview -->
+## 🔎 Overview
 
 **CodeShare** is an application for saving and sharing code, similar to a social network page for devs. It is a new version of an [older project from the beginning of my career](https://github.com/sucodelarangela/alura-challenge-front-end), developed at the time with vanilla JavaScript, HTML and CSS, besides some extra libs, and it used _localStorage_ to save the data locally.
 
 This new version is currently being developed in React, with a MongoDb database and Firebase authentication. The application will be deployed as soon as it reaches an almost complete status and its url will be available in this same repository. The design is currently the same as the original project but the idea is to change the UI in the future.
+
+## 📈 Development Status
+
+- [x] Create database in _MongoDb Atlas_, definitions of _models_, _controllers_ and routes;
+- [x] Initiate the project with Vite and set initial configs (_ESLint, absolute imports_, etc.);
+- [x] Develop the basic design of pages: styles with _styled-components_ and routes for _react-router-dom_;
+- [x] Create of _AuthContext_ which shares the logged user info between pages;
+- [x] Integrate app with _Firebase_ for user authentication and create a _custom hook_ for login, logout and accounte deletion (_useAuth_);
+- [x] Create a dialog with a form for user login and registration, which can be closed by clicking the button, clicking the overlay of hitting ESC key (for accessibility purposes);
+- [x] Create a toast notification informing user logout (to improve);
+- [x] Integrate with _MongoDb_ API for GET, POST and DELETE users when authenticating, registrating and deleting account;
+- [x] Create a _custom hook_ to fetch the data from the API (_useFetch_) and dinamically feed the Cards in Community Page;
+- [x] Organize the Cards grid with Masonry component from Material UI for better screen spacing otimization;
+- [ ] Integrate the code editor with MongoDb database for creating and editing new codes on Community page;
+- [ ] Create a Dashboard so the user can manage her/his codes (similar to the Dashboard page from the [**MiniBlog**](http://curso-react-udemy.vercel.app/) project);
+- [ ] General enhancement of the login dialog UX;
+- [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
+- [ ] Create option for different languages (idea in evaluation).
 
 <!--
 ## ⚙️ How to use it
@@ -81,10 +118,9 @@ To save new videos:
 - Type the video url (YouTube only);
 - Click on the "Ver thumbnail" to extract the video image;
 - Click in "Cadastrar" button to save it on the specified playlist.
+-->
 
 <a href='#top'>🔼 Back to top</a>
-
--->
 
 ---
 
