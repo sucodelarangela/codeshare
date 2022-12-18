@@ -4,7 +4,7 @@ import Card from './Card';
 import Masonry from '@mui/lab/Masonry';
 
 export const Community = () => {
-  const { data: cards, loading, error } = useFetch('http://localhost:8000/codes');
+  const { data: cards, loading, error } = useFetch('/codes');
   console.log(cards);
 
   return (
