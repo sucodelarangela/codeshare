@@ -8,6 +8,7 @@ import { Home } from 'pages/Home';
 import { Community } from 'pages/Community';
 import { onAuthStateChanged } from 'firebase/auth';
 import { AuthProvider } from 'context/AuthContext.jsx';
+import { HljsProvider } from 'context/HljsContext';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -27,14 +28,16 @@ function App() {
 
   return (
     <AuthProvider value={{ user }}>
-      <Router>
-        <GlobalStyles />
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/community' element={<Community />} />
-        </Routes>
-      </Router>
+      <HljsProvider>
+        <Router>
+          <GlobalStyles />
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/community' element={<Community />} />
+          </Routes>
+        </Router>
+      </HljsProvider>
     </AuthProvider>
   );
 }
