@@ -9,7 +9,6 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     font-size: 1rem;
     transition: .3s;
-    color: var(--white);
   }  
   
   :root {
@@ -68,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
 
   legend {
     padding-bottom: 1rem;
-  }  
+  }
 
   .home {
     @media screen and (min-width: 1280px) {

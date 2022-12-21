@@ -19,6 +19,7 @@ const MainMenu = styled.div`
       display: flex;
       align-items: center;
       gap: 1rem;
+      color: var(--white);
       opacity: .56;
       &:hover, &:focus {
         opacity: .8;

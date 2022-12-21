@@ -2,7 +2,7 @@ import * as Styled from './styles';
 import { useHljsValue } from 'context/HljsContext';
 
 export const CustomizationForm = ({ color, setColor }) => {
-  const { hljsKeys } = useHljsValue();
+  const { hljs, hljsKeys, setHlStyle } = useHljsValue();
   return (
     <Styled.Form>
       <Styled.Fieldset>
@@ -18,7 +18,7 @@ export const CustomizationForm = ({ color, setColor }) => {
           <label htmlFor='project__language' className='sr-only'>Digite a linguagem do seu projeto</label>
           <input id='project__language' type='text' placeholder='Linguagem do seu projeto' />
           <label htmlFor='project__highlight' className='sr-only'>Escolha a linguagem do seu código</label>
-          <select name="highlight" id="project__highlight" defaultValue='Selecione um tema de highlight'>
+          <select onChange={(e) => setHlStyle(hljs[e.target.value])} name="highlight" id="project__highlight" defaultValue='Selecione um tema de highlight'>
             <option value="Selecione um tema de highlight" disabled>Selecione um tema de highlight</option>
             {hljsKeys.map((key) => (
               <option key={key} value={key}>{key}</option>
