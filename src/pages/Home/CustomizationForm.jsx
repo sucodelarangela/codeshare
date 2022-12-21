@@ -1,5 +1,4 @@
 import * as Styled from './styles';
-import * as hljs from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useHljsValue } from 'context/HljsContext';
 
 export const CustomizationForm = ({ color, setColor }) => {

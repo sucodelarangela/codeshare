@@ -10,13 +10,13 @@ const EditorField = styled.div`
 
 const Textarea = styled.div`
   padding: 2rem;
-  /* background: var(--cian); */
   border-radius: 8px;
   margin-bottom: 2rem;
-  & .editor__dots {
-    background: var(--black);
-    padding: 1rem 1rem .5rem;
-    border-radius: 4px 4px 0 0;
+  position: relative;
+  & svg {
+    position: absolute;
+    left: 48px;
+    top: 48px;
   }
   & textarea {
     display: flex;
@@ -24,7 +24,7 @@ const Textarea = styled.div`
     min-height: 18rem;
     width: 100%;
     border-radius: 0 0 4px 4px;
-    padding: 1rem;
+    padding: 2.75rem 1rem 1rem;
     white-space: pre-wrap;
     line-height: 1.125rem;
     font-family: var(--roboto);
