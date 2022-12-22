@@ -7,6 +7,7 @@ const codeSchema = new mongoose.Schema({
   description: { type: String, required: true },
   code: { type: String, required: true },
   language: String,
+  hljs: { type: String, default: 'a11y-dark' },
   color: { type: String, default: '#6bd1ff' },
   // likes e comentários serão implementados futuramente
   // likes: { type: Number, default: 0 },
