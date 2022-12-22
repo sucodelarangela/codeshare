@@ -43,7 +43,7 @@ Esta nova versão está sendo desenvolvida atualmente com React, além de contar
 - [x] Criação de um _custom hook_ para busca de dados na API (_useFetch_) e alimentação dinâmica dos Cards na página de Comunidade;
 - [x] Organização do grid dos Cards com o uso do componente _Masonry_ do _Material UI_ para otimização de espaço em tela;
 - [ ] Integração do editor de códigos com o banco de dados do _MongoDb_ para funcionalidade de criação e edição de novos códigos na página Comunidade;
-- [ ] Uso de syntax highlight ([highlight.js](https://highlightjs.org/) ou similar) nos Cards;
+- [x] Uso de syntax highlight (com [react-syntax-highlighter](https://www.npmjs.com/package/react-syntax-highlighter)) nos Cards;
 - [ ] Criação de uma página Dashboard para gerenciamento de códigos por parte do usuário logado (similar ao Dashboard do projeto [**MiniBlog**](http://curso-react-udemy.vercel.app/));
 - [ ] Melhorar de forma geral a UX da _dialog_ de _login_;
 - [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
@@ -101,7 +101,7 @@ This new version is currently being developed in React, with a MongoDb database 
 - [x] Create a _custom hook_ to fetch the data from the API (_useFetch_) and dinamically feed the Cards in Community Page;
 - [x] Organize the Cards grid with Masonry component from Material UI for better screen spacing otimization;
 - [ ] Integrate the code editor with MongoDb database for creating and editing new codes on Community page;
-- [ ] Syntax highlighting (with [highlight.js](https://highlightjs.org/) ou similar) for the Cards;
+- [x] Syntax highlighting (with [react-syntax-highlighter](https://www.npmjs.com/package/react-syntax-highlighter)) for the Cards;
 - [ ] Create a Dashboard so the user can manage her/his codes (similar to the Dashboard page from the [**MiniBlog**](http://curso-react-udemy.vercel.app/) project);
 - [ ] General enhancement of the login dialog UX;
 - [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
