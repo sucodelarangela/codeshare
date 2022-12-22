@@ -5,7 +5,6 @@ import Masonry from '@mui/lab/Masonry';
 
 export const Community = () => {
   const { data: cards, loading, error } = useFetch('/codes');
-  console.log(cards);
 
   return (
     <section className='community'>
@@ -22,6 +21,7 @@ export const Community = () => {
               project={card.projectName}
               description={card.description}
               language={card.language}
+              highlight={card.hljs}
               author={card.author.name}
               photo={card.author.photoURL}
             />

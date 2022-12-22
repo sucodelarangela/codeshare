@@ -3,20 +3,21 @@ import { Textarea } from 'pages/Home/styles';
 import { User } from 'components/Header/styles';
 import { ReactComponent as MacDots } from 'assets/mac_buttons.svg';
 import { FaUser } from 'react-icons/fa';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import * as hljs from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const Card = styled(Textarea)`
-  white-space: pre-wrap;
   margin-bottom: 0;
   padding: 32px 32px 0;
   width: 100%;
   & svg {
-    position: relative;
+    position: absolute;
+    left: 16px;
+    top: 16px;
   }
   & .card__code {
-    background: var(--black);
     width: 100%;
     border-radius: 4px;
-    padding: 1rem;
     font-family: var(--roboto);
     position: relative;
     &::after {
@@ -63,12 +64,19 @@ const CodeUser = styled(User).attrs({ as: 'div' })`
 `;
 
 // eslint-disable-next-line react/display-name
-export default ({ color, code, project, description, language, photo, author }) => {
+export default ({ color, code, project, description, language, highlight, photo, author }) => {
   return (
     <Card color={color}>
       <div className='card__code'>
         <MacDots />
-        <p>{code}</p>
+        <SyntaxHighlighter
+          customStyle={{ padding: '2.75rem 1rem 1rem', borderRadius: '4px' }}
+          language={language}
+          style={hljs[highlight]}
+          wrapLongLines
+        >
+          {code}
+        </SyntaxHighlighter>
       </div>
       <div className="card__info">
         <h2>{project}</h2>
@@ -78,6 +86,6 @@ export default ({ color, code, project, description, language, photo, author }) 
           <p>{author}</p>
         </CodeUser>
       </div>
-    </Card>
+    </Card >
   );
 };
