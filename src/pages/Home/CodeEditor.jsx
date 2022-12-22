@@ -1,26 +1,44 @@
 import * as Styled from './styles.jsx';
 import { ReactComponent as MacDots } from 'assets/mac_buttons.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { useHljsValue } from 'context/HljsContext.jsx';
 
 export const CodeEditor = ({ color }) => {
   const [hlActive, setHlActive] = useState(false);
   const [code, setCode] = useState('');
-  const { hlStyle } = useHljsValue();
-  console.log(hlStyle);
+  const { hlStyle, language } = useHljsValue();
+
+  function handleSize(e) {
+    e.style.height = 'auto';
+    e.style.height = e.scrollHeight + 'px';
+  }
+
+  useEffect(() => {
+    const textarea = document.querySelector('.code');
+    if (textarea) {
+      handleSize(textarea);
+    }
+  }, [hlActive]);
+
   return (
     <>
       <Styled.Textarea style={{ background: color }}>
         <MacDots />
         {!hlActive ? (
-          <textarea value={code} onChange={(e) => setCode(e.target.value)} placeholder='Insira aqui o seu código...'>
+          <textarea
+            className='code'
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            onInput={(e) => handleSize(e.target)}
+            placeholder='Insira aqui o seu código...'
+          >
           </textarea>
         ) : (
           <SyntaxHighlighter
             style={hlStyle}
-            language='css'
-            customStyle={{ padding: '2.75rem 1rem 1rem', minHeight: '18rem' }}
+            language={language}
+            customStyle={{ padding: '2.75rem 1rem 1rem', minHeight: '18rem', fontSize: '14px' }}
             wrapLongLines
           >
             {code}

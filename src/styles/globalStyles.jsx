@@ -69,6 +69,11 @@ export const GlobalStyles = createGlobalStyle`
     padding-bottom: 1rem;
   }
 
+  pre > code > span > span {
+    font-family: var(--roboto);
+    font-size: 14px;
+  }
+
   .home {
     @media screen and (min-width: 1280px) {
       display: grid;
