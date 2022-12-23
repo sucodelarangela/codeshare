@@ -7,14 +7,15 @@ import { CustomizationForm } from './CustomizationForm.jsx';
 
 export const Home = () => {
   const [color, setColor] = useState('#6bd1ff');
+  const [code, setCode] = useState('');
 
   return (
     <section className='home'>
       <MainMenu />
       <Styled.EditorField>
-        <CodeEditor color={color} />
+        <CodeEditor color={color} code={code} setCode={setCode} />
       </Styled.EditorField>
-      <CustomizationForm color={color} setColor={setColor} />
+      <CustomizationForm color={color} setColor={setColor} code={code} />
       {/* <Styled.Form>
         <Styled.Fieldset>
           <h3>Seu projeto</h3>

@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { useHljsValue } from 'context/HljsContext.jsx';
 
-export const CodeEditor = ({ color }) => {
+export const CodeEditor = ({ color, code, setCode }) => {
   const [hlActive, setHlActive] = useState(false);
-  const [code, setCode] = useState('');
   const { hlStyle, language } = useHljsValue();
 
   function handleSize(e) {
@@ -32,6 +31,7 @@ export const CodeEditor = ({ color }) => {
             onChange={(e) => setCode(e.target.value)}
             onInput={(e) => handleSize(e.target)}
             placeholder='Insira aqui o seu código...'
+            required
           >
           </textarea>
         ) : (
