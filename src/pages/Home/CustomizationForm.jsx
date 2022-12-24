@@ -9,8 +9,8 @@ import { api } from 'api/api';
 export const CustomizationForm = ({ color, setColor, code }) => {
   const { hljs, hljsKeys, setHlStyle, languages, setLanguage } = useHljsValue();
   const { user } = useAuthValue();
+  let userId;
   const { data } = useFetch('/authors');
-
   const [codeData, setCodeData] = useState({
     projectName: '',
     description: '',
@@ -18,12 +18,23 @@ export const CustomizationForm = ({ color, setColor, code }) => {
     language: '',
     color: color,
     hljs: '',
-    author: ''
+    author: userId
   });
 
+
+  if (user) {
+    data.forEach(author => {
+      if (author.name === user.displayName) {
+        userId = author._id;
+      }
+    });
+  }
+
   useEffect(() => {
-    setCodeData({ ...codeData, code: code });
-  }, [code]);
+    setCodeData({ ...codeData, code: code, color: color, author: userId });
+  }, [code, userId, color]);
+
+  console.log(codeData);
 
   function handleLangchange(e) {
     setLanguage(e);
@@ -40,17 +51,10 @@ export const CustomizationForm = ({ color, setColor, code }) => {
     setCodeData({ ...codeData, color: color });
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setCodeData({ ...codeData, code: code });
-    if (user) {
-      await data.forEach(author => {
-        if (author.name === user.displayName) {
-          setCodeData({ ...codeData, author: author._id });
-          api.post('/codes', codeData);
-        }
-      });
-    }
+    // setCodeData({ ...codeData, code: code, author: userId });
+    api.post('/codes', codeData);
   }
   return (
     <Styled.Form onSubmit={handleSubmit}>
