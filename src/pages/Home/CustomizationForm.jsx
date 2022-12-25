@@ -5,12 +5,14 @@ import { useEffect } from 'react';
 import { useAuthValue } from 'context/AuthContext';
 import useFetch from 'hooks/useFetch';
 import { api } from 'api/api';
+import { useNavigate } from 'react-router-dom';
 
 export const CustomizationForm = ({ color, setColor, code }) => {
   const { hljs, hljsKeys, setHlStyle, languages, setLanguage } = useHljsValue();
   const { user } = useAuthValue();
   let userId;
   const { data } = useFetch('/authors');
+  const navigate = useNavigate();
   const [codeData, setCodeData] = useState({
     projectName: '',
     description: '',
@@ -51,10 +53,14 @@ export const CustomizationForm = ({ color, setColor, code }) => {
     setCodeData({ ...codeData, color: color });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    // setCodeData({ ...codeData, code: code, author: userId });
-    api.post('/codes', codeData);
+    try {
+      await api.post('/codes', codeData);
+    } catch (error) {
+      alert(error.message);
+    }
+    navigate('/community');
   }
   return (
     <Styled.Form onSubmit={handleSubmit}>
