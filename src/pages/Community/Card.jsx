@@ -61,6 +61,9 @@ const CodeUser = styled(User).attrs({ as: 'div' })`
     clip-path: circle();
     width: 2rem;
   }
+  & .img > svg {
+    position: unset;
+  }
 `;
 
 // eslint-disable-next-line react/display-name
@@ -82,7 +85,12 @@ export default ({ color, code, project, description, language, highlight, photo,
         <h2>{project}</h2>
         <p>{description}</p>
         <CodeUser>
-          <img src={photo ? photo : <FaUser size={32} />} alt="" aria-hidden='true' />
+          {photo ? (
+            <img src={photo} alt="" aria-hidden='true' />
+          ) : (
+            <span className='img'><FaUser size={32} /></span>
+          )}
+
           <p>{author}</p>
         </CodeUser>
       </div>
