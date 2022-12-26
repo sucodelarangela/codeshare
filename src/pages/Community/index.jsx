@@ -13,7 +13,7 @@ export const Community = () => {
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
         <Masonry columns={{ 768: 1, lg: 2 }} spacing={4} classes={{ width: '50%' }}>
-          {!loading && cards && cards.map(card => (
+          {!loading && cards && [...cards].reverse().map(card => (
             <Card
               key={card._id}
               color={card.color}
