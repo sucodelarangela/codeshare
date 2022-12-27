@@ -1,5 +1,5 @@
 import { GlobalStyles } from 'styles/globalStyles';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 
@@ -9,6 +9,7 @@ import { Community } from 'pages/Community';
 import { onAuthStateChanged } from 'firebase/auth';
 import { AuthProvider } from 'context/AuthContext.jsx';
 import { HljsProvider } from 'context/HljsContext';
+import { Dashboard } from 'pages/Dashboard';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -35,6 +36,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/community' element={<Community />} />
+            <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
           </Routes>
         </Router>
       </HljsProvider>

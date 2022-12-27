@@ -1,8 +1,8 @@
 import { NavBtn } from './NavBtn';
 import styled from 'styled-components';
-
-import editorIcon from 'assets/editor_icon.svg';
-import commIcon from 'assets/comm_icon.svg';
+import { FaCode, FaUsers } from 'react-icons/fa';
+import { GoGraph } from 'react-icons/go';
+import { useAuthValue } from 'context/AuthContext';
 
 const MainMenu = styled.div`
   display: none;
@@ -33,11 +33,27 @@ const MainMenu = styled.div`
 
 // eslint-disable-next-line react/display-name
 export default () => {
+  const { user } = useAuthValue();
+
   return (
     <MainMenu>
       <h3>Menu</h3>
-      <NavBtn route='/' src={editorIcon}>Editor de código</NavBtn>
-      <NavBtn route='/community' src={commIcon}>Comunidade</NavBtn>
+      <NavBtn route='/'>
+        <FaCode size={32} color='#6bd1ff' />
+        Editor de código
+      </NavBtn>
+      <NavBtn route='/community'>
+        <FaUsers size={32} color='#6bd1ff' />
+        Comunidade
+      </NavBtn>
+      {user ? (
+        <NavBtn route='/dashboard'>
+          <GoGraph size={32} color='#6bd1ff' />
+          Dashboard
+        </NavBtn>
+      ) : (
+        ''
+      )}
     </MainMenu>
   );
 };

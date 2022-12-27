@@ -83,14 +83,14 @@ export const GlobalStyles = createGlobalStyle`
     }
   }  
 
-  .community {
+  .community, .dashboard {
     @media screen and (min-width: 1280px) {
       display: grid;
       grid-template-areas: 'menu cards';
       grid-template-columns: 17rem auto;
       gap: 2.5rem;
     }  
-  }  
+  }
 
   .cards {
     display: grid;

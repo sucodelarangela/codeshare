@@ -36,8 +36,6 @@ export const CustomizationForm = ({ color, setColor, code }) => {
     setCodeData({ ...codeData, code: code, color: color, author: userId });
   }, [code, userId, color]);
 
-  console.log(codeData);
-
   function handleLangchange(e) {
     setLanguage(e);
     setCodeData({ ...codeData, language: e });
