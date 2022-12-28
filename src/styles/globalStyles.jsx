@@ -92,6 +92,12 @@ export const GlobalStyles = createGlobalStyle`
     }  
   }
 
+  .codelist {
+    @media screen and (min-width: 1280px) {
+      grid-area: cards;
+    }
+  }
+
   .cards {
     display: grid;
     grid-auto-flow: row;
