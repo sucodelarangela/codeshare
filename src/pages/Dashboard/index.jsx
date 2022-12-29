@@ -20,6 +20,9 @@ export const Dashboard = () => {
             <CodesList
               key={post._id}
               name={post.projectName}
+              description={post.description}
+              theme={post.hljs}
+              color={post.color}
             />
           ))
         ) : (
