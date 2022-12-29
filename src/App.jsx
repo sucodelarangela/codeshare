@@ -10,10 +10,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { AuthProvider } from 'context/AuthContext.jsx';
 import { HljsProvider } from 'context/HljsContext';
 import { Dashboard } from 'pages/Dashboard';
+import useFetch from 'hooks/useFetch';
 
 function App() {
   const [user, setUser] = useState(undefined);
+  let userId;
   const { auth } = useAuth();
+  const { data: authors } = useFetch('/authors');
 
   const loadingUser = user === undefined;
 
@@ -27,8 +30,16 @@ function App() {
     return <p>Carregando...</p>;
   }
 
+  if (user) {
+    authors.forEach(author => {
+      if (author.name === user.displayName) {
+        userId = author._id;
+      }
+    });
+  }
+
   return (
-    <AuthProvider value={{ user }}>
+    <AuthProvider value={{ user, userId }}>
       <HljsProvider>
         <Router>
           <GlobalStyles />

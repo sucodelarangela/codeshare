@@ -4,17 +4,8 @@ import useFetch from 'hooks/useFetch';
 import CodesList from './CodesList';
 
 export const Dashboard = () => {
-  const { user } = useAuthValue();
-  let userId;
-  const { data: authors } = useFetch('/authors');
-
-  if (user) {
-    authors.forEach(author => {
-      if (author.name === user.displayName) {
-        userId = author._id;
-      }
-    });
-  }
+  const { userId } = useAuthValue();
+  console.log(userId);
 
   const { data: posts, error, loading } = useFetch(`/codes/search?author=${userId}`);
 
@@ -24,7 +15,7 @@ export const Dashboard = () => {
       <div className="codelist">
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
-        {!loading && posts ? (
+        {posts ? (
           [...posts].reverse().map(post => (
             <CodesList
               key={post._id}
