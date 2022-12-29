@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const CodesList = styled.div`
   background: transparent;
-  border: 1px solid var(--white);
+  border-bottom: 1px solid var(--light-blue);
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
