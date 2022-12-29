@@ -41,7 +41,13 @@ const CodesList = styled.div`
   }
   .actions {
     display: flex;
-    gap: 32px;
+    gap: 16px;
+    button, a {
+      padding: unset;
+      padding: 4px;
+      margin: unset;
+      border-radius: 4px;
+    }
   }
 `;
 
@@ -56,8 +62,8 @@ export default ({ name, description, theme, color }) => {
       <p>Tema: {theme}</p>
       <span style={{ background: color }}></span>
       <div className='actions'>
-        <Link to={''}>Editar</Link>
-        <button>Deletar</button>
+        <Link to={''} className='logout'>Editar</Link>
+        <button className='close'>Deletar</button>
       </div>
     </CodesList>
   );

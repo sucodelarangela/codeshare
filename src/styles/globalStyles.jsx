@@ -117,6 +117,24 @@ export const GlobalStyles = createGlobalStyle`
     background: var(--overlay);
   }
 
+  .close {
+    margin-top: 8px;
+    color: var(--dark-red);
+    background-color: var(--light-red);
+    border: 1px solid var(--red-border);
+    &:hover {
+      background-color: var(--red-border);
+    }
+  }
+  .logout {
+    color: var(--dark-blue);
+    background: #e9e9ed;
+    border: 1px solid #d0d0d7;
+    &:hover {
+      background-color: #d0d0d7;
+    }
+  }
+
   .sr-only {
     position: absolute;
     height: 1px;

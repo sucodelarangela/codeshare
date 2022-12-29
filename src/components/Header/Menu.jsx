@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { api } from 'api/api';
 import { useAuthValue } from 'context/AuthContext';
 import { NavBtn } from 'components/NavBtn';
-import editorIcon from 'assets/editor_icon.svg';
-import commIcon from 'assets/comm_icon.svg';
+import { FaCode, FaUsers } from 'react-icons/fa';
+import { GoGraph } from 'react-icons/go';
 
 const Menu = styled.div`
   background: var(--white);
@@ -25,10 +25,23 @@ const Menu = styled.div`
     align-items: center;
     margin-bottom: 8px;
     gap: 5px;
+    opacity: .56;
+    &:hover, &:focus {
+        opacity: .8;
+      }
+    &.active {
+      opacity: 1;
+    }
+    @media screen and (min-width: 1280px) {
+      display: none;
+    }
   }
   hr {
     border: 1px solid var(--light-blue);
     margin-bottom: 16px;
+    @media screen and (min-width: 1280px) {
+      display: none;
+    }
   }
   button {
     display: block;
@@ -36,19 +49,6 @@ const Menu = styled.div`
     width: 100%;
     border-radius: 4px;
     transition: .3s;
-  }
-  .close {
-    margin-top: 8px;
-    color: var(--dark-red);
-    background-color: var(--light-red);
-    border: 1px solid var(--red-border);
-    &:hover {
-      background-color: var(--red-border);
-    }
-  }
-  .logout {
-    color: var(--dark-blue);
-    border: 1px solid #d0d0d7;
   }
 `;
 
@@ -165,8 +165,22 @@ export default ({ setShowMenu, setShowDialog }) => {
   return (
     <Menu>
       <Toast.Provider swipeDirection='left' duration={2000}>
-        <NavBtn className='navlink' route='/' src={editorIcon} style={{ display: 'block' }}>Editor de código</NavBtn>
-        <NavBtn className='navlink' route='/community' src={commIcon}>Comunidade</NavBtn>
+        <NavBtn route='/' style={{ display: 'block' }}>
+          <FaCode size={32} color='#051d3b' />
+          Editor de código
+        </NavBtn>
+        <NavBtn route='/community' >
+          <FaUsers size={32} color='#051d3b' />
+          Comunidade
+        </NavBtn>
+        {user ? (
+          <NavBtn route='/dashboard'>
+            <GoGraph size={32} color='#051d3b' />
+            Dashboard
+          </NavBtn>
+        ) : (
+          ''
+        )}
         <hr />
         {user ?
           <button className='logout' onClick={() => setOpen(true)}>Fazer logout</button>
