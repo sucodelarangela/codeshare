@@ -19,7 +19,7 @@ export const CustomizationForm = ({ color, setColor, code }) => {
     code: code,
     language: '',
     color: color,
-    hljs: '',
+    hljs: 'a11yDark',
     author: userId
   });
 

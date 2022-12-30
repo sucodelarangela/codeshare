@@ -52,7 +52,7 @@ export const GlobalStyles = createGlobalStyle`
   body, button, input, textarea {
     font-family: var(--inter);
     color: var(--white);
-  }  
+  }
 
   h3 {
     padding-bottom: 0;
@@ -61,7 +61,7 @@ export const GlobalStyles = createGlobalStyle`
     letter-spacing: .4rem;
   }  
 
-  a {
+  a, button {
     cursor: pointer;
   }  
 

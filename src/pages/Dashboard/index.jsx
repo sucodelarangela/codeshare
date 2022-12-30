@@ -3,6 +3,8 @@ import { useAuthValue } from 'context/AuthContext';
 import useFetch from 'hooks/useFetch';
 import CodesList from './CodesList';
 import styled from 'styled-components';
+import { api } from 'api/api';
+import { useEffect, useState } from 'react';
 
 const ListHead = styled(CodesList)`
   color: var(--light-blue);
@@ -24,9 +26,22 @@ const ListHead = styled(CodesList)`
 
 export const Dashboard = () => {
   const { userId } = useAuthValue();
-  console.log(userId);
+  let { data, error, loading } = useFetch(`/codes/search?author=${userId}`);
+  const [posts, setPosts] = useState(data);
 
-  const { data: posts, error, loading } = useFetch(`/codes/search?author=${userId}`);
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
+
+  async function handleDelete(id) {
+    try {
+      await api.delete(`/codes/${id}`);
+      let response = await api.get(`/codes/search?author=${userId}`);
+      setPosts(response.data);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return (
     <section className="dashboard">
@@ -49,6 +64,8 @@ export const Dashboard = () => {
               description={post.description}
               theme={post.hljs}
               color={post.color}
+              postId={post._id}
+              handleDelete={() => handleDelete(post._id)}
             />
           ))
         ) : (
