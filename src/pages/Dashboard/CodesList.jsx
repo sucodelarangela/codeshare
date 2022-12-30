@@ -42,6 +42,9 @@ const CodesList = styled.div`
   .actions {
     display: flex;
     gap: 16px;
+    p {
+      display: none;
+    }
     button, a {
       padding: unset;
       padding: 4px;
@@ -52,18 +55,19 @@ const CodesList = styled.div`
 `;
 
 // eslint-disable-next-line react/display-name
-export default ({ name, description, theme, color }) => {
+export default ({ className, name, description, theme, color, colorName, actions }) => {
   return (
-    <CodesList>
+    <CodesList className={className}>
       <p>{name}</p>
-      <p>
+      <p title={description}>
         {description.length > 20 ? `${description.substring(0, 20)}...` : description}
       </p>
-      <p>Tema: {theme}</p>
-      <span style={{ background: color }}></span>
+      <p>{theme}</p>
+      <span style={{ background: color }}>{colorName}</span>
       <div className='actions'>
         <Link to={''} className='logout'>Editar</Link>
         <button className='close'>Deletar</button>
+        <p>{actions}</p>
       </div>
     </CodesList>
   );
