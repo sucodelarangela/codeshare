@@ -55,7 +55,7 @@ const CodesList = styled.div`
 `;
 
 // eslint-disable-next-line react/display-name
-export default ({ className, name, description, theme, color, colorName, handleDelete, actions }) => {
+export default ({ className, name, description, theme, color, colorName, postId, handleDelete, actions }) => {
 
   return (
     <CodesList className={className}>
@@ -66,7 +66,7 @@ export default ({ className, name, description, theme, color, colorName, handleD
       <p>{theme}</p>
       <span style={{ background: color }}>{colorName}</span>
       <div className='actions'>
-        <Link to={''} className='logout'>Editar</Link>
+        <Link to={`/edit/${postId}`} className='logout'>Editar</Link>
         <button className='close' onClick={handleDelete}>Deletar</button>
         <p>{actions}</p>
       </div>

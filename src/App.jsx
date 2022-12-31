@@ -10,6 +10,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { AuthProvider } from 'context/AuthContext.jsx';
 import { HljsProvider } from 'context/HljsContext';
 import { Dashboard } from 'pages/Dashboard';
+import { EditPost } from 'pages/EditPost';
 import useFetch from 'hooks/useFetch';
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/community' element={<Community />} />
             <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
+            <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/' />} />
           </Routes>
         </Router>
       </HljsProvider>
