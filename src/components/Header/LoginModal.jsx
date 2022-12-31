@@ -98,7 +98,7 @@ export default ({ setShowDialog }) => {
   const [photoURL, setPhotoURL] = useState('');
   const [error, setError] = useState(''); // this is a front end error
 
-  const { login, createUser, error: authError, loading } = useAuth();
+  const { login, createUser, error: authError, loading, user } = useAuth();
 
   useEffect(() => {
     function handleEscapeKey(event) {
@@ -125,7 +125,7 @@ export default ({ setShowDialog }) => {
       return;
     }
     const res = await createUser(user);
-    api.post('/authors', { name: displayName, photoURL: photoURL });
+    api.post('/authors', { name: displayName, photoURL: photoURL, uid: user.uid });
     setShowDialog(false);
   };
 

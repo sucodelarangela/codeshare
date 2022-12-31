@@ -4,7 +4,8 @@ const authorSchema = new mongoose.Schema(
   {
     id: { type: String },
     name: { type: String, required: true },
-    photoURL: { type: String }
+    photoURL: { type: String },
+    uid: { type: String, required: true }
   },
   {
     versionKey: false // controle do versionamento
