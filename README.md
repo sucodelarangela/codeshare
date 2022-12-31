@@ -45,11 +45,10 @@ Esta nova versão está sendo desenvolvida atualmente com React, além de contar
 - [x] Integração do editor de códigos com o banco de dados do _MongoDb_ para funcionalidade de criação de novos códigos na página Comunidade;
 - [ ] Criação de um _toast_ informando que o código foi criado com sucesso no banco de dados;
 - [x] Redirecionamento à página Comunidade após criação de um novo post;
-- [ ] Integração com o banco de dados do _MongoDb_ para edição de códigos existentes na página Comunidade;
+- [x] Integração com o banco de dados do _MongoDb_ para edição de códigos existentes na página Comunidade;
 - [x] Uso de syntax highlight (com [react-syntax-highlighter](https://www.npmjs.com/package/react-syntax-highlighter)) nos Cards;
 - [x] Criação de uma página Dashboard para gerenciamento de códigos por parte do usuário logado (similar ao Dashboard do projeto [**MiniBlog**](http://curso-react-udemy.vercel.app/));
 - [x] Criação da funcionalidade Deletar;
-- [ ] Criação da funcionalidade Editar;
 - [ ] Melhorar de forma geral a UX da _dialog_ de _login_;
 - [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
 - [ ] Opção de salvar o card como imagem (usando [html2canvas](https://html2canvas.hertzen.com/) ou similar);
@@ -108,11 +107,10 @@ This new version is currently being developed in React, with a MongoDb database 
 - [x] Integrate the code editor with MongoDb database for creating new codes on Community page;
 - [ ] Create a toast notification informing the successful creation of a new post;
 - [x] Redirect user to Community page after creating a new post;
-- [ ] Integrate with MongoDb database for editing codes on Community page;
+- [x] Integrate with MongoDb database for editing codes on Community page;
 - [x] Syntax highlighting (with [react-syntax-highlighter](https://www.npmjs.com/package/react-syntax-highlighter)) for the Cards;
 - [x] Create a Dashboard so the user can manage her/his codes (similar to the Dashboard page from the [**MiniBlog**](http://curso-react-udemy.vercel.app/) project);
 - [x] Create delete functionality;
-- [ ] Create update functionality;
 - [ ] General enhancement of the login dialog UX;
 - [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
 - [ ] Create option to save the card as image (by using [html2canvas](https://html2canvas.hertzen.com/) or similar);
