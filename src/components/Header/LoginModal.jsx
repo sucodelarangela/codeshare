@@ -137,6 +137,7 @@ export default ({ setShowDialog }) => {
       password
     };
     const res = await login(user);
+    if (!authError) setShowDialog(false);
   };
 
   useEffect(() => {
