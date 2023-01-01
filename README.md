@@ -49,7 +49,7 @@ Esta nova versão está sendo desenvolvida atualmente com React, além de contar
 - [x] Uso de syntax highlight (com [react-syntax-highlighter](https://www.npmjs.com/package/react-syntax-highlighter)) nos Cards;
 - [x] Criação de uma página Dashboard para gerenciamento de códigos por parte do usuário logado (similar ao Dashboard do projeto [**MiniBlog**](http://curso-react-udemy.vercel.app/));
 - [x] Criação da funcionalidade Deletar;
-- [ ] Melhorar de forma geral a UX da _dialog_ de _login_;
+- [x] Melhorar de forma geral a UX da _dialog_ de _login_;
 - [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
 - [ ] Opção de salvar o card como imagem (usando [html2canvas](https://html2canvas.hertzen.com/) ou similar);
 - [ ] Criação de opção de idiomas pt/br/en (a avaliar).
@@ -111,7 +111,7 @@ This new version is currently being developed in React, with a MongoDb database 
 - [x] Syntax highlighting (with [react-syntax-highlighter](https://www.npmjs.com/package/react-syntax-highlighter)) for the Cards;
 - [x] Create a Dashboard so the user can manage her/his codes (similar to the Dashboard page from the [**MiniBlog**](http://curso-react-udemy.vercel.app/) project);
 - [x] Create delete functionality;
-- [ ] General enhancement of the login dialog UX;
+- [x] General enhancement of the login dialog UX;
 - [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
 - [ ] Create option to save the card as image (by using [html2canvas](https://html2canvas.hertzen.com/) or similar);
 - [ ] Create option for different languages (idea in evaluation).
