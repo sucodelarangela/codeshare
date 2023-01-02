@@ -126,8 +126,9 @@ export default ({ setShowDialog }) => {
       setError('As senhas precisam ser iguais');
       return;
     }
-    const res = await createUser(user);
-    api.post('/authors', { name: displayName, photoURL: photoURL, uid: user.uid });
+    await createUser(user).then(res => {
+      api.post('/authors', { name: displayName, photoURL: photoURL, uid: res.uid });
+    });
   };
 
   const handleSubmit = async (e) => {
