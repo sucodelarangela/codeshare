@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { api } from 'api/api';
+import { useAuthValue } from 'context/AuthContext';
 
 export const LoginModal = styled.section`
     position: absolute;
@@ -98,7 +99,8 @@ export default ({ setShowDialog }) => {
   const [photoURL, setPhotoURL] = useState('');
   const [error, setError] = useState(''); // this is a front end error
 
-  const { login, createUser, error: authError, loading, user } = useAuth();
+  const { login, createUser, error: authError, loading } = useAuth();
+  const { user } = useAuthValue();
 
   useEffect(() => {
     function handleEscapeKey(event) {
@@ -126,7 +128,6 @@ export default ({ setShowDialog }) => {
     }
     const res = await createUser(user);
     api.post('/authors', { name: displayName, photoURL: photoURL, uid: user.uid });
-    setShowDialog(false);
   };
 
   const handleSubmit = async (e) => {
@@ -137,14 +138,16 @@ export default ({ setShowDialog }) => {
       password
     };
     const res = await login(user);
-    if (!authError) setShowDialog(false);
   };
 
   useEffect(() => {
     if (authError) {
       setError(authError);
     }
-  }, [authError]);
+    if (user) {
+      setShowDialog(false);
+    }
+  }, [authError, user]);
 
   return (
     <>
@@ -152,7 +155,11 @@ export default ({ setShowDialog }) => {
       <LoginModal role='dialog'>
         <h2>Entrar</h2>
         <p>Faça o {register ? 'cadastro' : 'login'} para usar o sistema</p>
-        {!register && <p className='register' onClick={() => setRegister(true)}>Ainda não tem cadastro? Clique aqui!</p>}
+        {!register ? (
+          <p className='register' onClick={() => setRegister(true)}>Ainda não tem cadastro? Clique aqui!</p>
+        ) : (
+          <p className='register' onClick={() => setRegister(false)}>Já tem cadastro? Faça seu login!</p>
+        )}
         <hr />
         <form onSubmit={register ? handleRegister : handleSubmit}>
           {register && (
