@@ -58,7 +58,7 @@ export const CustomizationForm = ({ color, setColor, code }) => {
     } catch (error) {
       alert(error.message);
     }
-    navigate('/community');
+    navigate('/');
   }
   return (
     <Styled.Form onSubmit={handleSubmit}>

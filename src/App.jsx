@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 
 import { Header } from 'components/Header';
-import { Home } from 'pages/Home';
+import { Editor } from 'pages/Editor';
 import { Community } from 'pages/Community';
 import { onAuthStateChanged } from 'firebase/auth';
 import { AuthProvider } from 'context/AuthContext.jsx';
@@ -46,8 +46,8 @@ function App() {
           <GlobalStyles />
           <Header />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/community' element={<Community />} />
+            <Route path='/' element={<Community />} />
+            <Route path='/editor' element={<Editor />} />
             <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
             <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/' />} />
           </Routes>

@@ -5,7 +5,7 @@ import MainMenu from 'components/MainMenu.jsx';
 import { CodeEditor } from './CodeEditor.jsx';
 import { CustomizationForm } from './CustomizationForm.jsx';
 
-export const Home = () => {
+export const Editor = () => {
   const [color, setColor] = useState('#6bd1ff');
   const [code, setCode] = useState('');
 

@@ -165,13 +165,13 @@ export default ({ setShowMenu, setShowDialog }) => {
   return (
     <Menu>
       <Toast.Provider swipeDirection='left' duration={2000}>
-        <NavBtn route='/' style={{ display: 'block' }}>
-          <FaCode size={32} color='#051d3b' />
-          Editor de código
-        </NavBtn>
-        <NavBtn route='/community' >
+        <NavBtn route='/' >
           <FaUsers size={32} color='#051d3b' />
           Comunidade
+        </NavBtn>
+        <NavBtn route='/editor' style={{ display: 'block' }}>
+          <FaCode size={32} color='#051d3b' />
+          Editor de código
         </NavBtn>
         {user ? (
           <NavBtn route='/dashboard'>

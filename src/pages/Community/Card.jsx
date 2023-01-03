@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Textarea } from 'pages/Home/styles';
+import { Textarea } from 'pages/Editor/styles';
 import { User } from 'components/Header/styles';
 import { ReactComponent as MacDots } from 'assets/mac_buttons.svg';
 import { FaUser } from 'react-icons/fa';

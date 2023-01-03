@@ -63,7 +63,7 @@ export const EditPost = () => {
     } catch (error) {
       alert(error.message);
     }
-    navigate('/community');
+    navigate('/');
   }
 
   return (

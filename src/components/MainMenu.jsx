@@ -39,12 +39,12 @@ export default () => {
     <MainMenu>
       <h3>Menu</h3>
       <NavBtn route='/'>
-        <FaCode size={32} color='#6bd1ff' />
-        Editor de código
-      </NavBtn>
-      <NavBtn route='/community'>
         <FaUsers size={32} color='#6bd1ff' />
         Comunidade
+      </NavBtn>
+      <NavBtn route='/editor'>
+        <FaCode size={32} color='#6bd1ff' />
+        Editor de código
       </NavBtn>
       {user ? (
         <NavBtn route='/dashboard'>
