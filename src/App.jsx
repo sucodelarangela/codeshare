@@ -12,6 +12,7 @@ import { HljsProvider } from 'context/HljsContext';
 import { Dashboard } from 'pages/Dashboard';
 import { EditPost } from 'pages/EditPost';
 import useFetch from 'hooks/useFetch';
+import { SearchProvider } from 'context/SearchContext';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -36,16 +37,18 @@ function App() {
   return (
     <AuthProvider value={{ user, userId }}>
       <HljsProvider>
-        <Router>
-          <GlobalStyles />
-          <Header />
-          <Routes>
-            <Route path='/' element={<Community />} />
-            <Route path='/editor' element={<Editor />} />
-            <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
-            <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/' />} />
-          </Routes>
-        </Router>
+        <SearchProvider>
+          <Router>
+            <GlobalStyles />
+            <Header />
+            <Routes>
+              <Route path='/' element={<Community />} />
+              <Route path='/editor' element={<Editor />} />
+              <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
+              <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/' />} />
+            </Routes>
+          </Router>
+        </SearchProvider>
       </HljsProvider>
     </AuthProvider>
   );
