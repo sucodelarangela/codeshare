@@ -20,25 +20,26 @@ export const Community = () => {
     <section className='community'>
       <MainMenu />
       <div className='cards'>
-        {loading && <p>Carregando...</p>}
+        {loading ? <p>Carregando...</p> : ''}
         {error && <p>{error}</p>}
         <Masonry columns={{ 768: 1, lg: 2 }} spacing={4} classes={{ width: '50%' }}>
-          {filteredCards.length > 0 ? (
-            filteredCards.reverse().map(card => (
-              <Card
-                key={card._id}
-                color={card.color}
-                code={card.code}
-                project={card.projectName}
-                description={card.description}
-                language={card.language}
-                highlight={card.hljs}
-                author={card.author.name}
-                photo={card.author.photoURL}
-              />
-            ))) : (
-            <p>Sua busca não retornou resultados.</p>
-          )}
+          {!loading ?
+            filteredCards.length > 0 ? (
+              filteredCards.reverse().map(card => (
+                <Card
+                  key={card._id}
+                  color={card.color}
+                  code={card.code}
+                  project={card.projectName}
+                  description={card.description}
+                  language={card.language}
+                  highlight={card.hljs}
+                  author={card.author.name}
+                  photo={card.author.photoURL}
+                />
+              ))) : (
+              <p>Sua busca não retornou resultados.</p>
+            ) : ''}
         </Masonry>
       </div>
     </section >
