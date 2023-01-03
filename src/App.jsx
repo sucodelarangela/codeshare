@@ -19,17 +19,11 @@ function App() {
   const { auth } = useAuth();
   const { data: authors } = useFetch('/authors');
 
-  const loadingUser = user === undefined;
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
   }, [auth]);
-
-  if (loadingUser) {
-    return <p>Carregando...</p>;
-  }
 
   if (user) {
     authors.forEach(author => {

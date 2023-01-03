@@ -81,7 +81,26 @@ export const GlobalStyles = createGlobalStyle`
       grid-template-columns: 17rem auto 17rem;
       gap: 2.5rem;
     }
-  }  
+  }
+
+  .home__title {
+    font-family: var(--rubik);
+    font-size: 32px;
+    color: var(--cian);
+    &::after {
+      content: '|';
+      margin-left: 4px;
+      animation: blink 0.8s infinite;
+    }
+  }
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 
   .community, .dashboard {
     @media screen and (min-width: 1280px) {

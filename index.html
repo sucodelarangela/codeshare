@@ -26,9 +26,55 @@
       href="https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap"
       rel="stylesheet"
     />
+    <style>
+      body {
+        background: #141414;
+      }
+      .splash {
+        font-family: "Rubik 80s Fade", monospace;
+        font-size: 32px;
+        color: #6bd1ff;
+        display: flex;
+        height: 80vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        animation: rotate 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+      }
+      .splash::after {
+        content: "_";
+        margin-left: 4px;
+        animation: blink 0.8s infinite;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotateY(0);
+        }
+        100% {
+          transform: rotateY(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <h1 class="splash">codeshare</h1>
+    </div>
+    <script>
+      const splash = document.querySelector(".splash");
+      splash.addEventListener("DOMContentLoaded", () => {
+        splash.style.display = "none";
+      });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
