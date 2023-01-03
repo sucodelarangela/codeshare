@@ -9,11 +9,13 @@ import * as Styled from './styles.jsx';
 import { useState } from 'react';
 import { useAuthValue } from 'context/AuthContext.jsx';
 import Menu from './Menu.jsx';
+import { useSearchValue } from 'context/SearchContext.jsx';
 
 export const Header = () => {
   const [showDialog, setShowDialog] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const { user } = useAuthValue();
+  const { query, setQuery } = useSearchValue();
 
   function toggleDialog() {
     setShowDialog((showDialog) => !showDialog);
@@ -28,7 +30,13 @@ export const Header = () => {
       {/* <img src={logo} alt="Codeshare home" /> */}
       <h1 className='home__title'>codeshare</h1>
       <label htmlFor="home__search" className='sr-only'>Busque por algo</label>
-      <Styled.Search id='home__search' type='text' placeholder='Busque por algo...' />
+      <Styled.Search
+        id='home__search'
+        type='text'
+        placeholder='Busque por algo...'
+        value={query}
+        onInput={(e) => setQuery(e.target.value)}
+      />
       <Styled.MenuWrapper>
         <button><IoSearch size={32} /></button>
         <Hamburger size={32} label='Abrir menu' toggled={showMenu} toggle={toggleMenu} />
