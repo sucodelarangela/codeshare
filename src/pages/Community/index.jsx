@@ -14,8 +14,6 @@ export const Community = () => {
     return cardCodes.includes(normalizedQuery) || card.language.includes(normalizedQuery);
   });
 
-  console.log(filteredCards);
-
   return (
     <section className='community'>
       <MainMenu />
@@ -23,7 +21,7 @@ export const Community = () => {
         {loading ? <p>Carregando...</p> : ''}
         {error && <p>{error}</p>}
         <Masonry columns={{ 768: 1, lg: 2 }} spacing={4} classes={{ width: '50%' }}>
-          {!loading ?
+          {!loading && !error ?
             filteredCards.length > 0 ? (
               filteredCards.reverse().map(card => (
                 <Card
