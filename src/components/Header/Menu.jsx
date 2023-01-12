@@ -3,7 +3,6 @@ import { useAuth } from 'hooks/useAuth.js';
 import * as Toast from '@radix-ui/react-toast';
 import styled from 'styled-components';
 import { useState } from 'react';
-import { api } from 'api/api';
 import { useAuthValue } from 'context/AuthContext';
 import { NavBtn } from 'components/NavBtn';
 import { FaCode, FaUsers } from 'react-icons/fa';
@@ -127,17 +126,6 @@ export default ({ setShowMenu, setShowDialog }) => {
   const { user } = useAuthValue();
 
   async function handleDelete() {
-    let id;
-    await api.get('/authors')
-      .then(res => {
-        res.data.forEach(author => {
-          if (author.name === user.displayName) {
-            id = author._id;
-          }
-        });
-      });
-    await api.delete(`/authors/${id}`);
-    await api.delete(`/codes/byauthor/${id}`);
     deleteAccount();
     setShowMenu(false);
   }

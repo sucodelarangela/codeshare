@@ -1,6 +1,7 @@
 // import database so our app understands we have firebase
 // eslint-disable-next-line no-unused-vars
 import { app } from 'firebase/config';
+import { api } from 'api/api';
 
 import {
   getAuth,
@@ -108,7 +109,20 @@ export const useAuth = () => {
         userProvidedPassword
       );
       await reauthenticateWithCredential(user, credential);
-      deleteUser(user);
+      await deleteUser(user)
+        .then(async () => {
+          let id;
+          await api.get('/authors')
+            .then(res => {
+              res.data.forEach(author => {
+                if (author.name === user.displayName) {
+                  id = author._id;
+                }
+              });
+            });
+          await api.delete(`/authors/${id}`);
+          await api.delete(`/codes/byauthor/${id}`);
+        });
     } catch (error) {
       console.error(error.message);
     }
