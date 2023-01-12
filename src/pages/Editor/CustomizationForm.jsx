@@ -120,7 +120,7 @@ export const CustomizationForm = ({ color, setColor, code }) => {
           />
         </div>
       </Styled.Fieldset>
-      <Styled.HightlightBtn type='submit'>Salvar projeto</Styled.HightlightBtn>
+      <Styled.HightlightBtn className={user ? '' : 'disabled'} type='submit' disabled={user ? false : true}>{user ? 'Salvar projeto' : 'Faça login para salvar'}</Styled.HightlightBtn>
     </Styled.Form>
   );
 };

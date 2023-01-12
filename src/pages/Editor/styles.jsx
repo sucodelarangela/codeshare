@@ -47,6 +47,13 @@ const HightlightBtn = styled.button`
     border: 4px solid var(--highlight-active);
     transition: 0s
   }
+  &.disabled {
+    cursor: not-allowed;
+    &:hover, &:active {
+      background: var(--highlight-btn);
+      border: none;
+    }
+  }
 `;
 
 const Form = styled.form`
