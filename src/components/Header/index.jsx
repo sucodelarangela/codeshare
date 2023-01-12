@@ -50,33 +50,35 @@ export const Header = () => {
   }, []);
 
   return (
-    <Styled.Header>
-      {!searchOn && <h1 className='home__title'>codeshare</h1>}
-      {pathname === '/' ? (
-        <>
-          <label htmlFor="home__search" className='sr-only'>Busque por algo</label>
-          <Styled.Search
-            id='home__search'
-            type='text'
-            placeholder='Busque por algo...'
-            value={query}
-            onInput={(e) => setQuery(e.target.value)}
-            ref={searchRef}
-          />
-        </>
-      ) : ''}
-      <Styled.MenuWrapper>
+    <>
+      {showDialog && <LoginModal setShowDialog={setShowDialog} />};
+      <Styled.Header>
+        {!searchOn && <h1 className='home__title'>codeshare</h1>}
         {pathname === '/' ? (
-          <button onClick={toggleDisplay}><IoSearch size={32} /></button>
+          <>
+            <label htmlFor="home__search" className='sr-only'>Busque por algo</label>
+            <Styled.Search
+              id='home__search'
+              type='text'
+              placeholder='Busque por algo...'
+              value={query}
+              onInput={(e) => setQuery(e.target.value)}
+              ref={searchRef}
+            />
+          </>
         ) : ''}
-        <Hamburger size={32} label='Abrir menu' toggled={showMenu} toggle={toggleMenu} />
-      </Styled.MenuWrapper>
-      <Styled.User onClick={user ? toggleMenu : toggleDialog} >
-        {user ? user.photoURL ? <img src={user.photoURL} alt="" aria-hidden='true' /> : <FaUser size={32} /> : <IoLogIn size={32} />}
-        {user ? <span>{user.displayName}</span> : <span>Login</span>}
-      </Styled.User>
-      {showDialog && <LoginModal setShowDialog={setShowDialog} />}
-      {showMenu && <Menu setShowMenu={setShowMenu} setShowDialog={setShowDialog} />}
-    </Styled.Header>
+        <Styled.MenuWrapper>
+          {pathname === '/' ? (
+            <button onClick={toggleDisplay}><IoSearch size={32} /></button>
+          ) : ''}
+          <Hamburger size={32} label='Abrir menu' toggled={showMenu} toggle={toggleMenu} />
+        </Styled.MenuWrapper>
+        <Styled.User onClick={user ? toggleMenu : toggleDialog} >
+          {user ? user.photoURL ? <img src={user.photoURL} alt="" aria-hidden='true' /> : <FaUser size={32} /> : <IoLogIn size={32} />}
+          {user ? <span>{user.displayName}</span> : <span>Login</span>}
+        </Styled.User>
+        {showMenu && <Menu setShowMenu={setShowMenu} setShowDialog={setShowDialog} />}
+      </Styled.Header>
+    </>
   );
 };
