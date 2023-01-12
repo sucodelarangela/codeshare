@@ -17,7 +17,6 @@ const MainMenu = styled.div`
     width: 17rem;
     position: fixed;
     left: 32px;
-    border: 1px solid red;
     & a {
       display: flex;
       align-items: center;
