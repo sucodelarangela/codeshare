@@ -75,6 +75,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .home {
+    margin-top: 88px;
     @media screen and (min-width: 1280px) {
       display: grid;
       grid-template-areas: 'menu editor form';  
@@ -103,6 +104,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .community, .dashboard {
+    margin-top: 88px;
     @media screen and (min-width: 1280px) {
       display: grid;
       grid-template-areas: 'menu cards';

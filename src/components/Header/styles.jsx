@@ -5,12 +5,20 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   gap: 2.5rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(20, 20, 20, .7);
+  box-shadow: 0 2px 4px rgba(20, 20, 20, .8);
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 0;
+  backdrop-filter: blur(5px);
   @media screen and (min-width: 768px) {
-    padding-bottom: 2rem;
+    padding: 1rem 2rem 1rem;
   }
   @media screen and (min-width: 1280px) {
-    padding-bottom: 2.5rem;
+    padding: 1rem 2.5rem 1rem;
     display: grid;
     grid-template-areas: 'logo search user';
     grid-template-columns: 17rem calc(100% - 39rem) 17rem;
@@ -19,21 +27,24 @@ const Header = styled.header`
 
 const Search = styled.input`
   display: none;
+  width: 100%;
+  height: 3.5rem;
+  padding: 1rem;
+  background: var(--input);
+  border-radius: 8px;
+  caret-color: var(--white);
+  &:hover, &:focus {
+    background: var(--input-hover);
+  }
   @media screen and (min-width: 768px) {
     display: flex;
-    width: 100%;
-    height: 3.5rem;
-    padding: 1rem;
-    background: var(--input);
-    border-radius: 8px;
-    caret-color: var(--white);
-    &:hover, &:focus {
-      background: var(--input-hover);
-    }
   }
   @media screen and (min-width: 1280px) {
     grid-area: search;
     /* width: 100%; */
+  }
+  &.show {
+    display: flex;
   }
 `;
 
