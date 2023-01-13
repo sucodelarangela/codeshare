@@ -1,8 +1,9 @@
-import { NavBtn } from './NavBtn';
 import styled from 'styled-components';
-import { FaCode, FaUsers } from 'react-icons/fa';
-import { GoGraph } from 'react-icons/go';
 import { useAuthValue } from 'context/AuthContext';
+import { NavBtn } from './NavBtn';
+import { FaCode, FaSignInAlt, FaUsers } from 'react-icons/fa';
+import { GoGraph } from 'react-icons/go';
+import { IoCreate } from 'react-icons/io5';
 
 const MainMenu = styled.div`
   display: none;
@@ -48,14 +49,24 @@ export default () => {
         <FaCode size={32} color='#6bd1ff' />
         Editor de código
       </NavBtn>
+      {!user ? (
+        <>
+          <NavBtn route='/login'>
+            <FaSignInAlt size={32} color='#6bd1ff' />
+            Entrar
+          </NavBtn>
+          <NavBtn route='/register'>
+            <IoCreate size={32} color='#6bd1ff' />
+            Cadastrar
+          </NavBtn>
+        </>
+      ) : ('')}
       {user ? (
         <NavBtn route='/dashboard'>
           <GoGraph size={32} color='#6bd1ff' />
           Dashboard
         </NavBtn>
-      ) : (
-        ''
-      )}
+      ) : ('')}
     </MainMenu>
   );
 };

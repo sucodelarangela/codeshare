@@ -6,42 +6,47 @@ import { useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { api } from 'api/api';
 import { useAuthValue } from 'context/AuthContext';
+import { Link, useLocation } from 'react-router-dom';
 
 export const LoginModal = styled.section`
-  position: absolute;
-  background: var(--white);
-  width: min(31rem, 90%);
-  height: auto;
+  /* position: absolute; */
+  /* background: var(--white); */
+  /* margin: 0 auto; */
+  /* height: auto; */
   padding: 32px;
   border-radius: 8px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 11;
-  & h2, p, label, input {
+  /* left: 50%;
+  top: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* z-index: 11; */
+  /* & h2, p, label, input {
     color: var(--dark-blue);
-  }
+  } */
   & h2, p {
-    margin-bottom: 16px;
     text-align: center;
+    margin-bottom: 16px;
   }
   & h2 {
     font-size: 24px;
   }
   & p {
     font-size: 18px;
-    &.register {
-      font-size: 14px;
-      color: var(--light-blue);
-      border-bottom: 1px solid var(--white);
-      width: fit-content;
-      margin: 0 auto 16px;
-      cursor: pointer;
-      transition: border .3s;
-      &:hover {
-        border-bottom: 1px solid var(--light-blue);
-      }
+    &:nth-child(3) {
+      font-size: 16px;
+      margin-bottom: 24px;
     }
+  }
+  & .register {
+    font-size: 16px;
+    color: var(--light-blue);
+    border-bottom: 1px solid var(--black);
+    width: fit-content;
+    margin: 0 auto 16px;
+    cursor: pointer;
+    transition: border .3s;
+    &:hover {
+      border-bottom: 1px solid var(--light-blue);
+  }
     &.error {
       color: var(--dark-red);
       background-color: var(--light-red);
@@ -55,14 +60,21 @@ export const LoginModal = styled.section`
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     & label {
       margin-bottom: 8px;
     }
     & input {
+      background: var(--input);
       padding: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       border-radius: 4px;
       box-shadow: 0 2px 0 var(--light-blue);
+      transition: .3s;
+      &:hover, &:focus {
+        background: var(--input-hover);
+      }
     }
     & button {
       display: inline-block;
@@ -76,7 +88,7 @@ export const LoginModal = styled.section`
         opacity: .8;
       }
     }
-    & .close {
+    /* & .close {
       background: transparent;
       padding: 12px;
       position: absolute;
@@ -85,7 +97,7 @@ export const LoginModal = styled.section`
       & svg {
         fill: var(--dark-blue);
       }
-    }
+    } */
   }
 `;
 
@@ -98,9 +110,9 @@ export default ({ setShowDialog }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [photoURL, setPhotoURL] = useState('');
   const [error, setError] = useState(''); // this is a front end error
-
   const { login, createUser, error: authError, loading } = useAuth();
   const { user } = useAuthValue();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     function handleEscapeKey(event) {
@@ -152,18 +164,18 @@ export default ({ setShowDialog }) => {
 
   return (
     <>
-      <div className='overlay' onClick={() => setShowDialog(false)}></div>
+      {/* <div className='overlay' onClick={() => setShowDialog(false)}></div> */}
       <LoginModal role='dialog'>
         <h2>Entrar</h2>
-        <p>Faça o {register ? 'cadastro' : 'login'} para usar o sistema</p>
-        {!register ? (
-          <p className='register' onClick={() => setRegister(true)}>Ainda não tem cadastro? Clique aqui!</p>
+        <p>Faça o {pathname === '/login' ? 'cadastro' : 'login'} para usar o sistema</p>
+        {pathname === '/login' ? (
+          <p>Ainda não tem cadastro? <Link to='/register' className='register'>Clique aqui!</Link></p>
         ) : (
           <p className='register' onClick={() => setRegister(false)}>Já tem cadastro? Faça seu login!</p>
         )}
         <hr />
-        <form onSubmit={register ? handleRegister : handleSubmit}>
-          {register && (
+        <form onSubmit={pathname === '/register' ? handleRegister : handleSubmit}>
+          {pathname === '/register' && (
             <>
               <label htmlFor='displayName'>Nome ou apelido:</label>
               <input
@@ -197,7 +209,7 @@ export default ({ setShowDialog }) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          {register && (
+          {pathname === '/register' && (
             <>
               <label htmlFor='confirmPassword'>Confirmar senha:</label>
               <input
@@ -220,11 +232,11 @@ export default ({ setShowDialog }) => {
               />
             </>
           )}
-          {register && loading ? <button type='submit' disabled>Cadastrar</button> : register && !loading ? <button type='submit'>Cadastrar</button> : <button type='submit'>Entrar</button>}
+          {pathname === '/register' && loading ? <button type='submit' disabled>Cadastrar</button> : pathname === '/register' && !loading ? <button type='submit'>Cadastrar</button> : <button type='submit'>Entrar</button>}
           {error && <p className='error'>{error}</p>}
-          <button className='close' aria-label='Fechar modal' type='button' onClick={() => setShowDialog(false)}>
+          {/* <button className='close' aria-label='Fechar modal' type='button' onClick={() => setShowDialog(false)}>
             <IoMdClose size={24} />
-          </button>
+          </button> */}
         </form>
       </LoginModal>
     </>
