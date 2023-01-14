@@ -14,6 +14,7 @@ import { EditPost } from 'pages/EditPost';
 import useFetch from 'hooks/useFetch';
 import { SearchProvider } from 'context/SearchContext';
 import { Login } from 'pages/Login';
+import { Register } from 'pages/Register';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -44,8 +45,9 @@ function App() {
             <Header />
             <Routes>
               <Route path='/' element={<Community />} />
-              <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
               <Route path='/editor' element={<Editor />} />
+              <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+              <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
               <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
               <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/' />} />
             </Routes>

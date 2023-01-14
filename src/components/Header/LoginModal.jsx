@@ -1,27 +1,13 @@
-/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
-import { IoMdClose } from 'react-icons/io';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { api } from 'api/api';
 import { useAuthValue } from 'context/AuthContext';
 import { Link, useLocation } from 'react-router-dom';
 
 export const LoginModal = styled.section`
-  /* position: absolute; */
-  /* background: var(--white); */
-  /* margin: 0 auto; */
-  /* height: auto; */
-  padding: 32px;
+  padding: 0 32px;
   border-radius: 8px;
-  /* left: 50%;
-  top: 50%; */
-  /* transform: translate(-50%, -50%); */
-  /* z-index: 11; */
-  /* & h2, p, label, input {
-    color: var(--dark-blue);
-  } */
   & h2, p {
     text-align: center;
     margin-bottom: 16px;
@@ -30,10 +16,15 @@ export const LoginModal = styled.section`
     font-size: 24px;
   }
   & p {
-    font-size: 18px;
-    &:nth-child(3) {
-      font-size: 16px;
-      margin-bottom: 24px;
+    font-size: 16px;
+    margin-bottom: 24px;
+    &.error {
+      color: var(--dark-red);
+      background-color: var(--light-red);
+      border: 1px solid var(--red-border);
+      padding: 5px;
+      border-radius: 4px;
+      margin-top: 16px;
     }
   }
   & .register {
@@ -47,14 +38,6 @@ export const LoginModal = styled.section`
     &:hover {
       border-bottom: 1px solid var(--light-blue);
   }
-    &.error {
-      color: var(--dark-red);
-      background-color: var(--light-red);
-      border: 1px solid var(--red-border);
-      padding: 5px;
-      border-radius: 4px;
-      margin-top: 16px;
-    }
   }
   & form {
     display: flex;
@@ -88,22 +71,13 @@ export const LoginModal = styled.section`
         opacity: .8;
       }
     }
-    /* & .close {
-      background: transparent;
-      padding: 12px;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      & svg {
-        fill: var(--dark-blue);
-      }
-    } */
   }
 `;
 
 // eslint-disable-next-line react/display-name
 export default ({ setShowDialog }) => {
-  const [register, setRegister] = useState(false);
+  const emailRef = useRef();
+  const passRef = useRef();
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -136,6 +110,7 @@ export default ({ setShowDialog }) => {
     };
     if (password != confirmPassword) {
       setError('As senhas precisam ser iguais');
+      passRef.current.focus();
       return;
     }
     await createUser(user).then(res => {
@@ -151,11 +126,14 @@ export default ({ setShowDialog }) => {
       password
     };
     const res = await login(user);
+    return res;
   };
 
   useEffect(() => {
     if (authError) {
       setError(authError);
+      if (authError.includes('Usuário') || authError.includes('E-mail')) emailRef.current.focus();
+      if (authError.includes('Senha')) passRef.current.focus();
     }
     if (user) {
       setShowDialog(false);
@@ -164,17 +142,15 @@ export default ({ setShowDialog }) => {
 
   return (
     <>
-      {/* <div className='overlay' onClick={() => setShowDialog(false)}></div> */}
       <LoginModal role='dialog'>
-        <h2>Entrar</h2>
-        <p>Faça o {pathname === '/login' ? 'cadastro' : 'login'} para usar o sistema</p>
+        <h2>Faça o {pathname === '/login' ? 'login' : 'cadastro'} para usar o sistema</h2>
         {pathname === '/login' ? (
           <p>Ainda não tem cadastro? <Link to='/register' className='register'>Clique aqui!</Link></p>
         ) : (
-          <p className='register' onClick={() => setRegister(false)}>Já tem cadastro? Faça seu login!</p>
+          <p>Já tem cadastro? <Link to='/login' className='register'>Faça seu login!</Link></p>
         )}
-        <hr />
         <form onSubmit={pathname === '/register' ? handleRegister : handleSubmit}>
+          {error && <p className='error'>{error}</p>}
           {pathname === '/register' && (
             <>
               <label htmlFor='displayName'>Nome ou apelido:</label>
@@ -197,6 +173,7 @@ export default ({ setShowDialog }) => {
             placeholder='Insira seu e-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            ref={emailRef}
             required
           />
           <label htmlFor='password'>Senha:</label>
@@ -207,6 +184,7 @@ export default ({ setShowDialog }) => {
             placeholder='Insira sua senha'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            ref={passRef}
             required
           />
           {pathname === '/register' && (
@@ -233,10 +211,6 @@ export default ({ setShowDialog }) => {
             </>
           )}
           {pathname === '/register' && loading ? <button type='submit' disabled>Cadastrar</button> : pathname === '/register' && !loading ? <button type='submit'>Cadastrar</button> : <button type='submit'>Entrar</button>}
-          {error && <p className='error'>{error}</p>}
-          {/* <button className='close' aria-label='Fechar modal' type='button' onClick={() => setShowDialog(false)}>
-            <IoMdClose size={24} />
-          </button> */}
         </form>
       </LoginModal>
     </>
