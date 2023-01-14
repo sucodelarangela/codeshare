@@ -15,6 +15,7 @@ import useFetch from 'hooks/useFetch';
 import { SearchProvider } from 'context/SearchContext';
 import { Login } from 'pages/Login';
 import { Register } from 'pages/Register';
+import Page404 from 'pages/Page404';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -50,6 +51,7 @@ function App() {
               <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
               <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
               <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/' />} />
+              <Route path='*' element={<Page404 />} />
             </Routes>
           </Router>
         </SearchProvider>
