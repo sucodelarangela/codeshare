@@ -52,6 +52,7 @@ Esta nova versão está sendo desenvolvida atualmente com React, além de contar
 - [x] Melhorar de forma geral a UX da _dialog_ de _login_;
 - [x] Criação da funcionalidade de pesquisa para filtrar os cards (por palavra chave ou linguagem);
 - [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
+- [x] Criação de uma página de Sobre;
 - [ ] Opção de salvar o card como imagem (usando [html2canvas](https://html2canvas.hertzen.com/) ou similar);
 - [ ] Criação de opção de idiomas pt/br/en (a avaliar).
 
@@ -115,6 +116,7 @@ This new version is currently being developed in React, with a MongoDb database 
 - [x] General enhancement of the login dialog UX;
 - [x] Create Search functionality to filter cards (by keyword or language);
 - [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
+- [x] Create an About page;
 - [ ] Create option to save the card as image (by using [html2canvas](https://html2canvas.hertzen.com/) or similar);
 - [ ] Create option for different languages (idea in evaluation).
 
