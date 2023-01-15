@@ -119,15 +119,15 @@ export const EditPost = () => {
         <Styled.Fieldset>
           <h3>Personalização</h3>
           <div>
-            <label htmlFor='project__highlight' className='sr-only'>Escolha a linguagem do seu código</label>
+            <label htmlFor='project__highlight' className='sr-only'>Selecione um tema de highlight</label>
             <select
               onChange={(e) => handleHighlightChange(e.target.value)}
               name="highlight"
               id="project__highlight"
-              value={style}
+              value={style ? style : 'a11yDark'}
               required
             >
-              <option value="Selecione um tema de highlight" disabled>Selecione um tema de highlight</option>
+              <option value="Selecione um tema de highlight" disabled>Escolha a linguagem do seu código</option>
               {hljsKeys.map((key) => (
                 <option key={key} value={key}>{key}</option>
               ))}
@@ -136,7 +136,7 @@ export const EditPost = () => {
               onChange={(e) => setLanguage(e.target.value)}
               name="languages"
               id="project__languages"
-              value={language}
+              value={language ? language : 'bash'}
               required
             >
               <option value="Selecione uma linguagem" disabled>Selecione uma linguagem</option>
