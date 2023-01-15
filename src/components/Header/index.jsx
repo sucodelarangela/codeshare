@@ -67,7 +67,7 @@ export const Header = () => {
       </Styled.MenuWrapper>
       <Styled.User onClick={toggleMenu} >
         {user ? user.photoURL ? <img src={user.photoURL} alt="" aria-hidden='true' /> : <FaUser size={32} /> : <IoLogIn size={32} />}
-        {user ? <span>{user.displayName}</span> : <span>Login</span>}
+        {user ? <span>{user.displayName}</span> : <span>Menu</span>}
       </Styled.User>
       {showMenu && <Menu setShowMenu={setShowMenu} />}
     </Styled.Header>

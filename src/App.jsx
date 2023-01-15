@@ -50,8 +50,8 @@ function App() {
               <Route path='/editor' element={<Editor />} />
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
               <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
-              <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/' />} />
-              <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/' />} />
+              <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/login' />} />
+              <Route path='/edit/:postid' element={user ? <EditPost /> : <Navigate to='/login' />} />
               <Route path='/about' element={<About />} />
               <Route path='*' element={<Page404 />} />
             </Routes>

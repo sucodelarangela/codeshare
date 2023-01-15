@@ -88,17 +88,6 @@ export default ({ setShowDialog }) => {
   const { user } = useAuthValue();
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    function handleEscapeKey(event) {
-      if (event.code === 'Escape') {
-        setShowDialog(false);
-      }
-    }
-
-    document.addEventListener('keydown', handleEscapeKey);
-    return () => document.removeEventListener('keydown', handleEscapeKey);
-  }, []);
-
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
