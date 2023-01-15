@@ -60,13 +60,12 @@ export default () => {
             Cadastrar
           </NavBtn>
         </>
-      ) : ('')}
-      {user ? (
+      ) : (
         <NavBtn route='/dashboard'>
           <GoGraph size={32} color='#6bd1ff' />
           Dashboard
         </NavBtn>
-      ) : ('')}
+      )}
     </MainMenu>
   );
 };

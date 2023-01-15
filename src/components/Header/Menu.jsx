@@ -5,8 +5,9 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useAuthValue } from 'context/AuthContext';
 import { NavBtn } from 'components/NavBtn';
-import { FaCode, FaUsers } from 'react-icons/fa';
+import { FaCode, FaSignInAlt, FaUsers } from 'react-icons/fa';
 import { GoGraph } from 'react-icons/go';
+import { IoCreate } from 'react-icons/io5';
 
 const Menu = styled.div`
   background: var(--white);
@@ -31,16 +32,10 @@ const Menu = styled.div`
     &.active {
       opacity: 1;
     }
-    @media screen and (min-width: 1280px) {
-      display: none;
-    }
   }
   hr {
     border: 1px solid var(--light-blue);
     margin-bottom: 16px;
-    @media screen and (min-width: 1280px) {
-      display: none;
-    }
   }
   button {
     display: block;
@@ -120,7 +115,7 @@ const ToastDescription = styled(Toast.Description)`
 `;
 
 // eslint-disable-next-line react/display-name
-export default ({ setShowMenu, setShowDialog }) => {
+export default ({ setShowMenu }) => {
   const [open, setOpen] = useState(false);
   const { logout, deleteAccount } = useAuth();
   const { user } = useAuthValue();
@@ -153,29 +148,38 @@ export default ({ setShowMenu, setShowDialog }) => {
   return (
     <Menu>
       <Toast.Provider swipeDirection='left' duration={2000}>
-        <NavBtn route='/' >
-          <FaUsers size={32} color='#051d3b' />
+        <NavBtn route='/'>
+          <FaUsers size={32} color='#6bd1ff' />
           Comunidade
         </NavBtn>
-        <NavBtn route='/editor' style={{ display: 'block' }}>
-          <FaCode size={32} color='#051d3b' />
+        <NavBtn route='/editor'>
+          <FaCode size={32} color='#6bd1ff' />
           Editor de código
         </NavBtn>
-        {user ? (
+        {!user ? (
+          <>
+            <NavBtn route='/login'>
+              <FaSignInAlt size={32} color='#6bd1ff' />
+              Entrar
+            </NavBtn>
+            <NavBtn route='/register'>
+              <IoCreate size={32} color='#6bd1ff' />
+              Cadastrar
+            </NavBtn>
+          </>
+        ) : (
           <NavBtn route='/dashboard'>
-            <GoGraph size={32} color='#051d3b' />
+            <GoGraph size={32} color='#6bd1ff' />
             Dashboard
           </NavBtn>
-        ) : (
-          ''
         )}
-        <hr />
-        {user ?
-          <button className='logout' onClick={() => setOpen(true)}>Fazer logout</button>
-          :
-          <button className='logout' onClick={() => { setShowDialog(true); setShowMenu(false); }}>Fazer login</button>
+        {user &&
+          <>
+            <hr />
+            <button className='logout' onClick={() => setOpen(true)}>Fazer logout</button>
+            <button className='btn close' onClick={handleDelete}>Deletar conta</button>
+          </>
         }
-        <button className='btn close' onClick={handleDelete}>Deletar conta</button>
         <ToastRoot open={open} onOpenChange={setOpen}>
           <ToastTitle>Logout com sucesso!</ToastTitle>
           <ToastDescription>Você fez logout do sistema.</ToastDescription>
