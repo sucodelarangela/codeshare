@@ -3,7 +3,7 @@ import { useAuthValue } from 'context/AuthContext';
 import { NavBtn } from './NavBtn';
 import { FaCode, FaSignInAlt, FaUsers } from 'react-icons/fa';
 import { GoGraph } from 'react-icons/go';
-import { IoCreate } from 'react-icons/io5';
+import { IoCreate, IoInformationCircle } from 'react-icons/io5';
 
 const MainMenu = styled.div`
   display: none;
@@ -66,6 +66,10 @@ export default () => {
           Dashboard
         </NavBtn>
       )}
+      <NavBtn route='/about'>
+        <IoInformationCircle size={32} color='#6bd1ff' />
+        Sobre o Codeshare
+      </NavBtn>
     </MainMenu>
   );
 };

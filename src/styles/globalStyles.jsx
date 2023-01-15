@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-* {
+  * {
     border: 0;
     box-sizing: border-box;
     margin: 0;
@@ -9,6 +9,8 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     font-size: 1rem;
     transition: .3s;
+    scrollbar-width: thin;
+    scrollbar-color: var(--dark-blue) var(--black);
   }  
   
   :root {
@@ -47,7 +49,16 @@ export const GlobalStyles = createGlobalStyle`
     @media screen and (min-width: 768px) {
       padding: 2rem;
     }  
-  }  
+  }
+  
+  body::-webkit-scrollbar {
+    background: var(--black);
+    width: 8px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: var(--dark-blue);
+  }
 
   body, button, input, textarea {
     font-family: var(--inter);
@@ -166,5 +177,9 @@ export const GlobalStyles = createGlobalStyle`
     clip-path: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
-}
+  }
+
+  .about {
+    background: linear-gradient();
+  }
 `;

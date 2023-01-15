@@ -7,7 +7,7 @@ import { useAuthValue } from 'context/AuthContext';
 import { NavBtn } from 'components/NavBtn';
 import { FaCode, FaSignInAlt, FaUsers } from 'react-icons/fa';
 import { GoGraph } from 'react-icons/go';
-import { IoCreate } from 'react-icons/io5';
+import { IoCreate, IoInformationCircle } from 'react-icons/io5';
 
 const Menu = styled.div`
   background: var(--white);
@@ -173,6 +173,10 @@ export default ({ setShowMenu }) => {
             Dashboard
           </NavBtn>
         )}
+        <NavBtn route='/about'>
+          <IoInformationCircle size={32} color='#6bd1ff' />
+          Sobre o Codeshare
+        </NavBtn>
         {user &&
           <>
             <hr />
