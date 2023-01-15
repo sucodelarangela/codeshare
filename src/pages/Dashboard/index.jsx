@@ -25,13 +25,36 @@ const ListHead = styled(CodesList)`
 `;
 
 export const Dashboard = () => {
-  const { userId } = useAuthValue();
-  let { data, error, loading } = useFetch(`/codes/search?author=${userId}`);
-  const [posts, setPosts] = useState(data);
+  const { user } = useAuthValue();
+  let userId;
+  const { data: authors } = useFetch('/authors');
+
+  if (user) {
+    authors.forEach(author => {
+      if (author.name === user.displayName) {
+        userId = author._id;
+      }
+    });
+  }
+
+  const [posts, setPosts] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    setPosts(data);
-  }, [data]);
+    async function getData() {
+      try {
+        let data = await api.get(`/codes/search?author=${userId}`)
+          .then(res => res.data);
+        setPosts(data);
+      } catch (error) {
+        setError(error.message);
+      }
+      setLoading(false);
+    }
+
+    getData();
+  }, [userId]);
 
   async function handleDelete(id) {
     try {
@@ -56,7 +79,7 @@ export const Dashboard = () => {
         />
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
-        {posts ? (
+        {!loading && posts && posts.length > 0 ? (
           [...posts].reverse().map(post => (
             <CodesList
               key={post._id}
