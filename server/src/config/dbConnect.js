@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const dbConnection = process.env.DBCONNECTION;
+const dbConnection = process.env.MONGODB_URI;
 console.log(dbConnection);
 
 // pedir conexão
