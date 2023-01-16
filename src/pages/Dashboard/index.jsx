@@ -79,7 +79,7 @@ export const Dashboard = () => {
         />
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
-        {!loading && posts && posts.length > 0 ? (
+        {!loading && (
           [...posts].reverse().map(post => (
             <CodesList
               key={post._id}
@@ -91,8 +91,6 @@ export const Dashboard = () => {
               handleDelete={() => handleDelete(post._id)}
             />
           ))
-        ) : (
-          <p>Você não possui códigos cadastrados.</p>
         )}
       </div>
     </section>
