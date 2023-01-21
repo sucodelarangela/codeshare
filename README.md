@@ -8,15 +8,17 @@ _[Read it in English](#English)_
 
 O **CodeShare** é uma plataforma de compartilhamento de código, similar a uma rede social para desenvolvedores. Trata-se de uma releitura de um [projeto desenvolvido no começo da minha carreira](https://github.com/sucodelarangela/alura-challenge-front-end), na época desenvolvido com JavaScript, HTML e CSS, além de algumas bibliotecas extras, e que utilizava o _localStorage_ como forma de armazenamento dos dados.
 
-Esta nova versão está sendo desenvolvida atualmente com React, além de contar com um banco de dados do MongoDb e autenticação através do Firebase. O deploy da aplicação será feito assim que o desenvolvimento atingir um percentual mais próximo do completo e será disponibilizado neste mesmo repositório o link de acesso à página. O design está sendo mantido igual ao anterior por questões de desenvolvimento, mas a ideia é que a UI sofra modificações posteriores.
+Esta nova versão está sendo desenvolvida atualmente com **React**, além de contar com um banco de dados do **MongoDb** e autenticação através do **Firebase**. O design da página foi melhorado em relação ao anterior, acrescentando mais páginas para melhor usabilidade da aplicação.
+
+> NOTA: No primeiro carregamento da página, pode haver alguma demora no carregamento dos cards. Isso acontece pois a hospedagem do back-end "hiberna" quando a aplicação não está em uso e precisa de alguns segundos para sair desse estado :)
 
 <!-- prettier-ignore -->
 | 🪧 Vitrine. Dev |     |
 | -------------- | --- |
 | ✨ Nome        | **Codeshare: compartilhamento de códigos** |
 | 🏷️ Tecnologias | React, MongoDb, Firebase, Styled-Components, Material UI, Axios |
-| 🚀 URL         | Em breve / Coming soon |
-| 🔥 Desafio     | [Figma](https://www.figma.com/file/mhAelfm31DohdGVS1iuDGY/Alura-Challenge---Edi%C3%A7%C3%A3o-Front-end-(Copy)?node-id=207%253A729) |
+| 🚀 URL         | https://code--share.vercel.app/ |
+<!-- | 🔥 Desafio     | [Figma](https://www.figma.com/file/mhAelfm31DohdGVS1iuDGY/Alura-Challenge---Edi%C3%A7%C3%A3o-Front-end-(Copy)?node-id=207%253A729) | -->
 
 ![](https://raw.githubusercontent.com/sucodelarangela/codeshare/main/public/og-image.png#vitrinedev)
 
@@ -54,29 +56,8 @@ Esta nova versão está sendo desenvolvida atualmente com React, além de contar
 - [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
 - [x] Criação de uma página de Sobre;
 - [ ] Opção de salvar o card como imagem (usando [html2canvas](https://html2canvas.hertzen.com/) ou similar);
-- [ ] Criação de opção de idiomas pt/br/en (a avaliar).
-
-<!--
-A imersão contemplou o uso de **Next.js** para o desenvolvimento da UI da aplicação, com o menu, a função de busca dos vídeos cadastrados, a estilização e definição de tema claro e tema escuro com **styled-components**, bem como mostrou como criar um banco de dados para cadastro dos vídeos na plataforma **Supabase**.
-
-Como atividades adicionais, criei outras opções de tema além do claro/escuro, trocando o _toggle_ feito durante o evento por um _select_ com as opções de tema (esse _select_ foi criado com **Radix UI**). Também implementei a opção de escolher dentre três playlists diferentes para salvar os vídeos, pois no evento foi mostrado apenas como salvar no Supabase em uma única playlist pré-definida. Para finalizar a aplicação, criei a funcionalidade de excluir um vídeo de uma determinada playlist, bastando clicar no botão no canto superior direito da _thumbnail_.
-
-Como ideia de implementação futura, pode ser feito um sistema de cadastro/login para mostrar os vídeos por usuário, além da opção de poder criar uma nova playlist além das existentes. Atualmente a aplicação aceita apenas vídeos do YouTube, então torna-se necessário corrigir um erro que ocorre ao tentar adicionar vídeos de outras fontes.
-
-## ⚙️ Como usar
-
-Para usar a aplicação, basta acessar [este link](https://aluratube-next-js.vercel.app/). Não é necessário login, sendo mostrado na página da aplicação alguns dos meus vídeos favoritos.
-
-Para cadastrar novos vídeos, basta:
-
-- Clicar no botão que se encontra no canto inferior direito da tela;
-- Inserir o nome do vídeo;
-- Selecionar uma das três playlists existentes;
-- Inserir a URL do vídeo;
-- Clicar no botão "Ver thumbnail" para extrair a imagem do vídeo;
-- Clicar em "Cadastrar" para salva-lo na playlist especificada.
-
--->
+- [ ] Criação de opção de idiomas pt/br/en (a avaliar);
+- [ ] Refatoração geral do código para melhor organização.
 
 <a href='#top'>🔼 Voltar ao topo</a>
 
@@ -92,7 +73,9 @@ _English version_
 
 **CodeShare** is an application for saving and sharing code, similar to a social network page for devs. It is a new version of an [older project from the beginning of my career](https://github.com/sucodelarangela/alura-challenge-front-end), developed at the time with vanilla JavaScript, HTML and CSS, besides some extra libs, and it used _localStorage_ to save the data locally.
 
-This new version is currently being developed in React, with a MongoDb database and Firebase authentication. The application will be deployed as soon as it reaches an almost complete status and its url will be available in this same repository. The design is currently the same as the original project but the idea is to change the UI in the future.
+This new version is currently being developed in **React**, with a **MongoDb** database and **Firebase** authentication. The design was improved in comparison to the previous project, adding more pages to better usability.
+
+> NOTE: When loading the page for the first time, it may take some time to load the cards on Community page. This happens because the back-end hosting "hibernates" when the application is not in use and it needs some aditional seconds to "wake up" :)
 
 ## 📈 Development Status
 
@@ -118,22 +101,8 @@ This new version is currently being developed in React, with a MongoDb database 
 - [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
 - [x] Create an About page;
 - [ ] Create option to save the card as image (by using [html2canvas](https://html2canvas.hertzen.com/) or similar);
-- [ ] Create option for different languages (idea in evaluation).
-
-<!--
-## ⚙️ How to use it
-
-To use the application, visit [this link](https://aluratube-next-js.vercel.app/). It is not necessary to register or login to the app and some of my favorite videos will show on screen.
-
-To save new videos:
-
-- Click the button on the bottom right corner of the screen;
-- Type the title of the video;
-- Select one of the three playlists;
-- Type the video url (YouTube only);
-- Click on the "Ver thumbnail" to extract the video image;
-- Click in "Cadastrar" button to save it on the specified playlist.
--->
+- [ ] Create option for different languages (idea in evaluation);
+- [ ] General refactoring of the code for better organization.
 
 <a href='#top'>🔼 Back to top</a>
 
