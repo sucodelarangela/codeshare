@@ -26,6 +26,7 @@ export const Community = () => {
               filteredCards.reverse().map(card => (
                 <Card
                   key={card._id}
+                  id={card._id}
                   color={card.color}
                   code={card.code}
                   project={card.projectName}

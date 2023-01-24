@@ -138,7 +138,19 @@ export const GlobalStyles = createGlobalStyle`
       grid-template-rows: auto;  
       grid-area: cards;
     }
-  }  
+  }
+
+  svg.screenshot {
+    position: absolute;
+    right: 16px;
+    left: unset;
+    top: 16px;
+    cursor: pointer;
+    opacity: .25;
+    &:hover {
+      opacity: 1;
+    }
+  }
 
   .overlay {
     position: absolute;

@@ -1,19 +1,22 @@
 import styled from 'styled-components';
-import { Textarea } from 'pages/Editor/styles';
-import { User } from 'components/Header/styles';
-import { ReactComponent as MacDots } from 'assets/mac_buttons.svg';
-import { FaUser } from 'react-icons/fa';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import * as hljs from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { FaUser } from 'react-icons/fa';
+
+import { Textarea } from 'pages/Editor/styles';
+import { User } from 'components/Header/styles';
+import MacDots from 'assets/mac_buttons.png';
+import { ScreenshotBtn } from './ScreenshotBtn';
 
 const Card = styled(Textarea)`
   margin-bottom: 0;
   padding: 32px 32px 0;
   width: 100%;
-  & svg {
+  & .mac-dots {
     position: absolute;
     left: 16px;
     top: 16px;
+    height: 12px;
   }
   & .card__code {
     width: 100%;
@@ -57,6 +60,7 @@ const CodeUser = styled(User).attrs({ as: 'div' })`
   padding: 0;
   align-items: center;
   gap: .5rem;
+  position: relative;
   & > img {
     clip-path: circle();
     width: 2rem;
@@ -67,11 +71,11 @@ const CodeUser = styled(User).attrs({ as: 'div' })`
 `;
 
 // eslint-disable-next-line react/display-name
-export default ({ color, code, project, description, language, highlight, photo, author }) => {
+export default ({ id, color, code, project, description, language, highlight, photo, author }) => {
   return (
-    <Card color={color}>
+    <Card color={color} id={id}>
       <div className='card__code'>
-        <MacDots />
+        <img src={MacDots} alt="" aria-hidden className='mac-dots' />
         <SyntaxHighlighter
           customStyle={{ padding: '2.75rem 1rem 1rem', borderRadius: '4px' }}
           language={language}
@@ -80,6 +84,7 @@ export default ({ color, code, project, description, language, highlight, photo,
         >
           {code}
         </SyntaxHighlighter>
+        <ScreenshotBtn element={id} />
       </div>
       <div className="card__info">
         <h2>{project}</h2>
