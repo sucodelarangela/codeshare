@@ -11,6 +11,8 @@ O **CodeShare** é uma plataforma de compartilhamento de código, similar a uma 
 Esta nova versão está sendo desenvolvida atualmente com **React**, além de contar com um banco de dados do **MongoDb** e autenticação através do **Firebase**. O design da página foi melhorado em relação ao anterior, acrescentando mais páginas para melhor usabilidade da aplicação.
 
 > NOTA: No primeiro carregamento da página, pode haver alguma demora no carregamento dos cards. Isso acontece pois a hospedagem do back-end "hiberna" quando a aplicação não está em uso e precisa de alguns segundos para sair desse estado :)
+>
+> NOTA 2: A lib usada para a exportação do card em PNG possui algumas limitações na renderização de algumas propriedades CSS (como `clip-path`). Além disso, ela também possui algumas issues não resolvidas sobre `cross-origin` que podem resultar na não renderização de fotos de usuários de URL's externas no <canvas>.
 
 <!-- prettier-ignore -->
 | 🪧 Vitrine. Dev |     |
@@ -55,7 +57,7 @@ Esta nova versão está sendo desenvolvida atualmente com **React**, além de co
 - [x] Criação da funcionalidade de pesquisa para filtrar os cards (por palavra chave ou linguagem);
 - [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
 - [x] Criação de uma página de Sobre;
-- [ ] Opção de salvar o card como imagem (usando [html2canvas](https://html2canvas.hertzen.com/) ou similar);
+- [x] Opção de salvar o card como imagem (usando [html2canvas](https://html2canvas.hertzen.com/) ou similar);
 - [ ] Criação de opção de idiomas pt/br/en (a avaliar);
 - [ ] Refatoração geral do código para melhor organização.
 
@@ -76,6 +78,8 @@ _English version_
 This new version is currently being developed in **React**, with a **MongoDb** database and **Firebase** authentication. The design was improved in comparison to the previous project, adding more pages to better usability.
 
 > NOTE: When loading the page for the first time, it may take some time to load the cards on Community page. This happens because the back-end hosting "hibernates" when the application is not in use and it needs some aditional seconds to "wake up" :)
+>
+> NOTE 2: The lib used for exporting the card in PNG format has some limitations when rendering some CSS properties (such as `clip-path`). Also, it also has some unresolved `cross-origin` issues which may result in some external images not rendering on <canvas>.
 
 ## 📈 Development Status
 
@@ -100,7 +104,7 @@ This new version is currently being developed in **React**, with a **MongoDb** d
 - [x] Create Search functionality to filter cards (by keyword or language);
 - [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
 - [x] Create an About page;
-- [ ] Create option to save the card as image (by using [html2canvas](https://html2canvas.hertzen.com/) or similar);
+- [x] Create option to save the card as image (by using [html2canvas](https://html2canvas.hertzen.com/) or similar);
 - [ ] Create option for different languages (idea in evaluation);
 - [ ] General refactoring of the code for better organization.
 
