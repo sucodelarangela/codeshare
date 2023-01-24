@@ -140,7 +140,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  svg.screenshot {
+  svg#screenshot {
     position: absolute;
     right: 16px;
     left: unset;

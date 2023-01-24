@@ -17,6 +17,6 @@ export const ScreenshotBtn = ({ element }) => {
   }
 
   return (
-    <FaCamera size={20} className='screenshot' onClick={() => handleScreenshot(element)} />
+    <FaCamera size={20} id='screenshot' onClick={() => handleScreenshot(element)} />
   );
 };
