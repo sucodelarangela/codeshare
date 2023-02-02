@@ -6,7 +6,7 @@ import { FaUser } from 'react-icons/fa';
 import { Textarea } from 'pages/Editor/styles';
 import { User } from 'components/Header/styles';
 import MacDots from 'assets/mac_buttons.png';
-import { ScreenshotBtn } from './ScreenshotBtn';
+import { ActionBtn } from './ActionBtn';
 
 const Card = styled(Textarea)`
   margin-bottom: 0;
@@ -44,6 +44,10 @@ const Card = styled(Textarea)`
     width: calc(100% + 64px);
     padding: 24px;
     border-radius: 0 0 8px 8px;
+    & > div {
+      display: flex;
+      justify-content: space-between;
+    }
     & > h2 {
       font-size: 1.25rem;
       margin-bottom: 8px;
@@ -51,6 +55,14 @@ const Card = styled(Textarea)`
     & > p {
       margin-bottom: 24px;
     }
+  }
+  & .card__actions {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
   }
 `;
 
@@ -84,20 +96,25 @@ export default ({ id, color, code, project, description, language, highlight, ph
         >
           {code}
         </SyntaxHighlighter>
-        <ScreenshotBtn element={id} />
       </div>
       <div className="card__info">
         <h2>{project}</h2>
         <p>{description}</p>
-        <CodeUser>
-          {photo ? (
-            <img src={photo} alt="" aria-hidden='true' />
-          ) : (
-            <span className='img'><FaUser size={32} /></span>
-          )}
+        <div>
+          <CodeUser>
+            {photo ? (
+              <img src={photo} alt="" aria-hidden='true' />
+            ) : (
+              <span className='img'><FaUser size={32} /></span>
+            )}
 
-          <p>{author}</p>
-        </CodeUser>
+            <p>{author}</p>
+          </CodeUser>
+        </div>
+      </div>
+      <div className='card__actions'>
+        <ActionBtn element={id} icon='screenshot' />
+        <ActionBtn code={code} icon='clipboard' />
       </div>
     </Card >
   );

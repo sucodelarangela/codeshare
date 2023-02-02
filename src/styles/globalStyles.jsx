@@ -141,15 +141,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   svg#screenshot {
-    position: absolute;
-    right: 16px;
-    left: unset;
-    top: 16px;
+    position: unset;
     cursor: pointer;
-    opacity: .25;
-    &:hover {
-      opacity: 1;
-    }
   }
 
   .overlay {
