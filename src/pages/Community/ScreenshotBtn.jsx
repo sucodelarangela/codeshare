@@ -17,6 +17,6 @@ export const ScreenshotBtn = ({ element }) => {
   }
 
   return (
-    <FaCamera size={20} id='screenshot' onClick={() => handleScreenshot(element)} />
+    <FaCamera aria-label='Salvar screenshot' size={28} id='screenshot' onClick={() => handleScreenshot(element)} style={{ backgroundColor: '#141414', padding: '4px', borderRadius: '4px' }} />
   );
 };
