@@ -58,8 +58,9 @@ Esta nova versão está sendo desenvolvida atualmente com **React**, além de co
 - [ ] Criação de uma página de perfil para que o usuário possa alterar nome, senha e/ou imagem do avatar;
 - [x] Criação de uma página de Sobre;
 - [x] Opção de salvar o card como imagem (usando [html2canvas](https://html2canvas.hertzen.com/) ou similar);
+- [x] Opção de copiar o código do card para a área de transferência;
 - [ ] Criação de opção de idiomas pt/br/en (a avaliar);
-- [ ] Refatoração geral do código para melhor organização.
+- [ ] Refatoração geral do código para melhor organização e boas práticas.
 
 <a href='#top'>🔼 Voltar ao topo</a>
 
@@ -105,8 +106,9 @@ This new version is currently being developed in **React**, with a **MongoDb** d
 - [ ] Create a Profile page so the user may change her/his name, password and/or profile image;
 - [x] Create an About page;
 - [x] Create option to save the card as image (by using [html2canvas](https://html2canvas.hertzen.com/) or similar);
+- [x] Create option to copy the code content of the card to the clipboard;
 - [ ] Create option for different languages (idea in evaluation);
-- [ ] General refactoring of the code for better organization.
+- [ ] General refactoring of the code for better organization and good practices.
 
 <a href='#top'>🔼 Back to top</a>
 
