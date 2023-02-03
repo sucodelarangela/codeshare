@@ -1,16 +1,15 @@
-import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
-import { useAuth } from "hooks/useAuth";
-import { api } from "api/api";
-import { useAuthValue } from "context/AuthContext";
-import { Link, useLocation } from "react-router-dom";
-import { RiEyeLine, RiEyeOffFill } from "react-icons/ri";
+import styled from 'styled-components';
+import { useEffect, useRef, useState } from 'react';
+import { useAuth } from 'hooks/useAuth';
+import { api } from 'api/api';
+import { useAuthValue } from 'context/AuthContext';
+import { Link, useLocation } from 'react-router-dom';
+import { RiEyeLine, RiEyeOffFill } from 'react-icons/ri';
 
 export const LoginModal = styled.section`
   padding: 0 32px;
   border-radius: 8px;
-  & h2,
-  p {
+  & h2, p {
     text-align: center;
     margin-bottom: 16px;
   }
@@ -36,7 +35,7 @@ export const LoginModal = styled.section`
     width: fit-content;
     margin: 0 auto 16px;
     cursor: pointer;
-    transition: border 0.3s;
+    transition: border .3s;
     &:hover {
       border-bottom: 1px solid var(--light-blue);
     }
@@ -61,9 +60,8 @@ export const LoginModal = styled.section`
       margin-bottom: 24px;
       border-radius: 4px;
       box-shadow: 0 2px 0 var(--light-blue);
-      transition: 0.3s;
-      &:hover,
-      &:focus {
+      transition: 3s;
+      &:hover, &:focus {
         background: var(--input-hover);
       }
     }
@@ -101,18 +99,18 @@ export const Svg2 = styled(RiEyeOffFill)`
 export default ({ setShowDialog }) => {
   const emailRef = useRef();
   const passRef = useRef();
-  const [displayName, setDisplayName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
-  const [error, setError] = useState(""); // this is a front end error
+  const [displayName, setDisplayName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
+  const [error, setError] = useState(''); // this is a front end error
   const { login, createUser, error: authError, loading } = useAuth();
   const { user } = useAuthValue();
   const { pathname } = useLocation();
 
-  const [inputType, setInputType] = useState("password");
-  const [inputType2, setInputType2] = useState("password");
+  const [inputType, setInputType] = useState('password');
+  const [inputType2, setInputType2] = useState('password');
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -124,12 +122,12 @@ export default ({ setShowDialog }) => {
       photoURL,
     };
     if (password != confirmPassword) {
-      setError("As senhas precisam ser iguais");
+      setError('As senhas precisam ser iguais');
       passRef.current.focus();
       return;
     }
     await createUser(user).then((res) => {
-      api.post("/authors", {
+      api.post('/authors', {
         name: displayName,
         photoURL: photoURL,
         uid: res.uid,
@@ -151,9 +149,9 @@ export default ({ setShowDialog }) => {
   useEffect(() => {
     if (authError) {
       setError(authError);
-      if (authError.includes("Usuário") || authError.includes("E-mail"))
+      if (authError.includes('Usuário') || authError.includes('E-mail'))
         emailRef.current.focus();
-      if (authError.includes("Senha")) passRef.current.focus();
+      if (authError.includes('Senha')) passRef.current.focus();
     }
     if (user) {
       setShowDialog(false);
@@ -162,112 +160,112 @@ export default ({ setShowDialog }) => {
 
   return (
     <>
-      <LoginModal role="dialog">
+      <LoginModal role='dialog'>
         <h2>
-          Faça o {pathname === "/login" ? "login" : "cadastro"} para usar o
+          Faça o {pathname === '/login' ? 'login' : 'cadastro'} para usar o
           sistema
         </h2>
-        {pathname === "/login" ? (
+        {pathname === '/login' ? (
           <p>
-            Ainda não tem cadastro?{" "}
-            <Link to="/register" className="register">
+            Ainda não tem cadastro?{' '}
+            <Link to='/register' className='register'>
               Clique aqui!
             </Link>
           </p>
         ) : (
           <p>
-            Já tem cadastro?{" "}
-            <Link to="/login" className="register">
+            Já tem cadastro?{' '}
+            <Link to='/login' className='register'>
               Faça seu login!
             </Link>
           </p>
         )}
         <form
-          onSubmit={pathname === "/register" ? handleRegister : handleSubmit}
+          onSubmit={pathname === '/register' ? handleRegister : handleSubmit}
         >
-          {error && <p className="error">{error}</p>}
-          {pathname === "/register" && (
+          {error && <p className='error'>{error}</p>}
+          {pathname === '/register' && (
             <>
               <label htmlFor="displayName">Nome ou apelido:</label>
               <input
-                id="displayName"
-                type="text"
-                name="displayName"
-                placeholder="Insira seu nome"
+                id='displayName'
+                type='text'
+                name='displayName'
+                placeholder='Insira seu nome'
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 required
               />
             </>
           )}
-          <label htmlFor="email">E-mail:</label>
+          <label htmlFor='email'>E-mail:</label>
           <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Insira seu e-mail"
+            id='email'
+            type='email'
+            name='email'
+            placeholder='Insira seu e-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             ref={emailRef}
             required
           />
-          <label htmlFor="password">Senha:</label>
+          <label htmlFor='password'>Senha:</label>
           <div>
-            {inputType === "password" ? (
-              <Svg onClick={() => setInputType("text")} />
+            {inputType === 'password' ? (
+              <Svg onClick={() => setInputType('text')} />
             ) : (
-              <Svg2 onClick={() => setInputType("password")} />
+              <Svg2 onClick={() => setInputType('password')} />
             )}
 
             <input
-              id="password"
+              id='password'
               type={inputType}
-              name="password"
-              placeholder="Insira sua senha"
+              name='password'
+              placeholder='Insira sua senha'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               ref={passRef}
               required
             />
           </div>
-          {pathname === "/register" && (
+          {pathname === '/register' && (
             <>
-              <label htmlFor="confirmPassword">Confirmar senha:</label>
+              <label htmlFor='confirmPassword'>Confirmar senha:</label>
               <div>
-                {inputType2 === "password" ? (
-                  <Svg onClick={() => setInputType2("text")} />
+                {inputType2 === 'password' ? (
+                  <Svg onClick={() => setInputType2('text')} />
                 ) : (
-                  <Svg2 onClick={() => setInputType2("password")} />
+                  <Svg2 onClick={() => setInputType2('password')} />
                 )}
                 <input
-                  id="confirmPassword"
+                  id='confirmPassword'
                   type={inputType2}
-                  name="confirmPassword"
-                  placeholder="Confirme sua senha"
+                  name='confirmPassword'
+                  placeholder='Confirme sua senha'
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                 />
               </div>
-              <label htmlFor="photoURL">Foto de usuário:</label>
+              <label htmlFor='photoURL'>Foto de usuário:</label>
               <input
-                id="photoURL"
-                type="text"
-                name="photoURL"
-                placeholder="Insira uma URL"
+                id='photoURL'
+                type='text'
+                name='photoURL'
+                placeholder='Insira uma URL'
                 value={photoURL}
                 onChange={(e) => setPhotoURL(e.target.value)}
               />
             </>
           )}
-          {pathname === "/register" && loading ? (
-            <button type="submit" disabled>
+          {pathname === '/register' && loading ? (
+            <button type='submit' disabled>
               Cadastrar
             </button>
-          ) : pathname === "/register" && !loading ? (
-            <button type="submit">Cadastrar</button>
+          ) : pathname === '/register' && !loading ? (
+            <button type='submit'>Cadastrar</button>
           ) : (
-            <button type="submit">Entrar</button>
+            <button type='submit'>Entrar</button>
           )}
         </form>
       </LoginModal>
