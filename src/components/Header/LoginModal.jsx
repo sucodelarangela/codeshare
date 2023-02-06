@@ -4,6 +4,7 @@ import { useAuth } from 'hooks/useAuth';
 import { api } from 'api/api';
 import { useAuthValue } from 'context/AuthContext';
 import { Link, useLocation } from 'react-router-dom';
+import { RiEyeLine, RiEyeOffFill } from 'react-icons/ri';
 
 export const LoginModal = styled.section`
   padding: 0 32px;
@@ -37,7 +38,7 @@ export const LoginModal = styled.section`
     transition: border .3s;
     &:hover {
       border-bottom: 1px solid var(--light-blue);
-  }
+    }
   }
   & form {
     display: flex;
@@ -48,13 +49,18 @@ export const LoginModal = styled.section`
     & label {
       margin-bottom: 8px;
     }
+    & div {
+      position: relative;
+    }
+
     & input {
       background: var(--input);
+      width: 100%;
       padding: 8px;
       margin-bottom: 24px;
       border-radius: 4px;
       box-shadow: 0 2px 0 var(--light-blue);
-      transition: .3s;
+      transition: 3s;
       &:hover, &:focus {
         background: var(--input-hover);
       }
@@ -67,11 +73,28 @@ export const LoginModal = styled.section`
       border-radius: 4px;
       background: var(--light-blue);
       font-weight: bold;
-      &:hover, &:focus {
-        opacity: .8;
+      &:hover,
+      &:focus {
+        opacity: 0.8;
       }
     }
   }
+`;
+
+export const Svg = styled(RiEyeLine)`
+  position: absolute;
+  right: 13px;
+  top: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
+`;
+
+export const Svg2 = styled(RiEyeOffFill)`
+  position: absolute;
+  right: 13px;
+  top: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
 `;
 
 // eslint-disable-next-line react/display-name
@@ -88,31 +111,38 @@ export default ({ setShowDialog }) => {
   const { user } = useAuthValue();
   const { pathname } = useLocation();
 
+  const [inputType, setInputType] = useState('password');
+  const [inputType2, setInputType2] = useState('password');
+
   const handleRegister = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     const user = {
       displayName,
       email,
       password,
-      photoURL
+      photoURL,
     };
     if (password != confirmPassword) {
       setError('As senhas precisam ser iguais');
       passRef.current.focus();
       return;
     }
-    await createUser(user).then(res => {
-      api.post('/authors', { name: displayName, photoURL: photoURL, uid: res.uid });
+    await createUser(user).then((res) => {
+      api.post('/authors', {
+        name: displayName,
+        photoURL: photoURL,
+        uid: res.uid,
+      });
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     const user = {
       email,
-      password
+      password,
     };
     const res = await login(user);
     return res;
@@ -121,7 +151,8 @@ export default ({ setShowDialog }) => {
   useEffect(() => {
     if (authError) {
       setError(authError);
-      if (authError.includes('Usuário') || authError.includes('E-mail')) emailRef.current.focus();
+      if (authError.includes('Usuário') || authError.includes('E-mail'))
+        emailRef.current.focus();
       if (authError.includes('Senha')) passRef.current.focus();
     }
     if (user) {
@@ -132,21 +163,36 @@ export default ({ setShowDialog }) => {
   return (
     <>
       <LoginModal role='dialog'>
-        <h2>Faça o {pathname === '/login' ? 'login' : 'cadastro'} para usar o sistema</h2>
+        <h2>
+          Faça o {pathname === '/login' ? 'login' : 'cadastro'} para usar o
+          sistema
+        </h2>
         {pathname === '/login' ? (
-          <p>Ainda não tem cadastro? <Link to='/register' className='register'>Clique aqui!</Link></p>
+          <p>
+            Ainda não tem cadastro?{' '}
+            <Link to='/register' className='register'>
+              Clique aqui!
+            </Link>
+          </p>
         ) : (
-          <p>Já tem cadastro? <Link to='/login' className='register'>Faça seu login!</Link></p>
+          <p>
+            Já tem cadastro?{' '}
+            <Link to='/login' className='register'>
+              Faça seu login!
+            </Link>
+          </p>
         )}
-        <form onSubmit={pathname === '/register' ? handleRegister : handleSubmit}>
+        <form
+          onSubmit={pathname === '/register' ? handleRegister : handleSubmit}
+        >
           {error && <p className='error'>{error}</p>}
           {pathname === '/register' && (
             <>
-              <label htmlFor='displayName'>Nome ou apelido:</label>
+              <label htmlFor="displayName">Nome ou apelido:</label>
               <input
                 id='displayName'
-                type="text"
-                name="displayName"
+                type='text'
+                name='displayName'
                 placeholder='Insira seu nome'
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
@@ -157,8 +203,8 @@ export default ({ setShowDialog }) => {
           <label htmlFor='email'>E-mail:</label>
           <input
             id='email'
-            type="email"
-            name="email"
+            type='email'
+            name='email'
             placeholder='Insira seu e-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -166,40 +212,63 @@ export default ({ setShowDialog }) => {
             required
           />
           <label htmlFor='password'>Senha:</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            placeholder='Insira sua senha'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            ref={passRef}
-            required
-          />
+          <div>
+            {inputType === 'password' ? (
+              <Svg onClick={() => setInputType('text')} />
+            ) : (
+              <Svg2 onClick={() => setInputType('password')} />
+            )}
+
+            <input
+              id='password'
+              type={inputType}
+              name='password'
+              placeholder='Insira sua senha'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              ref={passRef}
+              required
+            />
+          </div>
           {pathname === '/register' && (
             <>
               <label htmlFor='confirmPassword'>Confirmar senha:</label>
-              <input
-                id="confirmPassword"
-                type="password"
-                name="confirmPassword"
-                placeholder='Confirme sua senha'
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
+              <div>
+                {inputType2 === 'password' ? (
+                  <Svg onClick={() => setInputType2('text')} />
+                ) : (
+                  <Svg2 onClick={() => setInputType2('password')} />
+                )}
+                <input
+                  id='confirmPassword'
+                  type={inputType2}
+                  name='confirmPassword'
+                  placeholder='Confirme sua senha'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </div>
               <label htmlFor='photoURL'>Foto de usuário:</label>
               <input
-                id="photoURL"
-                type="text"
-                name="photoURL"
+                id='photoURL'
+                type='text'
+                name='photoURL'
                 placeholder='Insira uma URL'
                 value={photoURL}
                 onChange={(e) => setPhotoURL(e.target.value)}
               />
             </>
           )}
-          {pathname === '/register' && loading ? <button type='submit' disabled>Cadastrar</button> : pathname === '/register' && !loading ? <button type='submit'>Cadastrar</button> : <button type='submit'>Entrar</button>}
+          {pathname === '/register' && loading ? (
+            <button type='submit' disabled>
+              Cadastrar
+            </button>
+          ) : pathname === '/register' && !loading ? (
+            <button type='submit'>Cadastrar</button>
+          ) : (
+            <button type='submit'>Entrar</button>
+          )}
         </form>
       </LoginModal>
     </>
