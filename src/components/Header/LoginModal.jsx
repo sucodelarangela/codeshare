@@ -86,6 +86,7 @@ export const Svg = styled(RiEyeLine)`
   right: 13px;
   top: 10px;
   font-size: 1.25rem;
+  cursor: pointer;
 `;
 
 export const Svg2 = styled(RiEyeOffFill)`
@@ -93,6 +94,7 @@ export const Svg2 = styled(RiEyeOffFill)`
   right: 13px;
   top: 10px;
   font-size: 1.25rem;
+  cursor: pointer;
 `;
 
 // eslint-disable-next-line react/display-name
