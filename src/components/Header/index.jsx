@@ -7,7 +7,7 @@ import * as Styled from './styles.jsx';
 
 import { useEffect, useState, useRef } from 'react';
 import { useAuthValue } from 'context/AuthContext.jsx';
-import Menu from './Menu.jsx';
+import { Menu } from './Menu.jsx';
 import { useSearchValue } from 'context/SearchContext.jsx';
 import { useLocation } from 'react-router-dom';
 
