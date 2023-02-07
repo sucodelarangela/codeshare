@@ -1,6 +1,6 @@
 import MainMenu from 'components/MainMenu';
 import { Link } from 'react-router-dom';
-import { Quote, Title, Text } from './styles';
+import { Quote, Title, Text, Watermark } from './styles';
 
 export const About = () => {
   return (
@@ -17,7 +17,7 @@ export const About = () => {
         <Text>Página de <b>Perfil</b> para gerenciamento dos dados do usuário.<br />Exportação dos Cards em formato de imagem.</Text>
         <Title>Informações adicionais</Title>
         <Text>Projeto desenvolvido por <a href='https://github.com/sucodelarangela' target='_blank' rel="noreferrer">Angela Caldas</a> com React, styled-components, Firebase, MongoDB, Axios e MUI.<br /><span>Syntax highlighting</span> com <a href='https://www.npmjs.com/package/react-syntax-highlighter' target='_blank' rel="noreferrer">react-syntax-highlighter</a>. Ícones do <a href='https://react-icons.github.io/react-icons' target='_blank' rel="noreferrer">react-icons</a>.</Text>
-        <Text><h1 style={{ textAlign: 'center' }}>C</h1></Text>
+        <Watermark style={{ textAlign: 'center' }}>C</Watermark>
       </div>
     </section >
   );

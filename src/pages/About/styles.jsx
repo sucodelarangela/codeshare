@@ -34,14 +34,13 @@ const Text = styled.p`
       border-color: var(--light-blue);
     }
   }
-  & h1 {
-    font-family: var(--rubik);
-    font-size: 60px;
-    color: var(--light-blue);
-  }
-  &:last-of-type {
-    margin: 20vh 0;
-  }
 `;
 
-export { Title, Quote, Text };
+const Watermark = styled.h1`
+  font-family: var(--rubik);
+  font-size: 60px;
+  color: var(--light-blue);
+  margin: 20vh 0;
+`;
+
+export { Title, Quote, Text, Watermark };
