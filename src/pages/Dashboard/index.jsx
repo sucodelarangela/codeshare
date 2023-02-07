@@ -1,4 +1,4 @@
-import MainMenu from 'components/MainMenu';
+import { MainMenu } from 'components/MainMenu';
 import { useAuthValue } from 'context/AuthContext';
 import useFetch from 'hooks/useFetch';
 import CodesList from './CodesList';

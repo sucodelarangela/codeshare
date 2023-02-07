@@ -1,7 +1,7 @@
 import * as Styled from './styles.jsx';
 import { useState } from 'react';
 
-import MainMenu from 'components/MainMenu.jsx';
+import { MainMenu } from 'components/MainMenu.jsx';
 import { CodeEditor } from './CodeEditor.jsx';
 import { CustomizationForm } from './CustomizationForm.jsx';
 

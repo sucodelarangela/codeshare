@@ -1,6 +1,6 @@
 import * as Styled from './styles.jsx';
 import { useEffect, useState } from 'react';
-import MainMenu from 'components/MainMenu.jsx';
+import { MainMenu } from 'components/MainMenu.jsx';
 import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from 'hooks/useFetch.js';
 import { ReactComponent as MacDots } from 'assets/mac_buttons.svg';

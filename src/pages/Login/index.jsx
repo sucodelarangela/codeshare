@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { Link } from 'react-router-dom';
 import { Input } from 'components/Input';
-import MainMenu from 'components/MainMenu';
+import { MainMenu } from 'components/MainMenu';
 
 export const Login = () => {
   const emailRef = useRef();

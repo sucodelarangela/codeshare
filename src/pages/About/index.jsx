@@ -1,4 +1,4 @@
-import MainMenu from 'components/MainMenu';
+import { MainMenu } from 'components/MainMenu';
 import { Link } from 'react-router-dom';
 import { Quote, Title, Text, Watermark } from './styles';
 

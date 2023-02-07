@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
 import { api } from 'api/api';
 import { Input } from 'components/Input';
-import MainMenu from 'components/MainMenu';
+import { MainMenu } from 'components/MainMenu';
 
 export const Register = () => {
   const emailRef = useRef();

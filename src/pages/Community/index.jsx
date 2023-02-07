@@ -1,4 +1,4 @@
-import MainMenu from 'components/MainMenu';
+import { MainMenu } from 'components/MainMenu';
 import useFetch from 'hooks/useFetch';
 import Card from './Card';
 import Masonry from '@mui/lab/Masonry';
