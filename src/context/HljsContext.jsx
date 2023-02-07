@@ -30,7 +30,8 @@ export function HljsProvider({ children }) {
     'scss',
     'shell',
     'typescript',
-    'xml'
+    'xml',
+    'yaml'
   ];
   const hljsKeys = Object.keys(hljs);
   const [hlStyle, setHlStyle] = useState(hljs.a11yDark);
